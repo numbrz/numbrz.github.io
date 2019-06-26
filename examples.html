@@ -35,13 +35,68 @@
         <h2>Headcount Tutorial</h2>
         <h3>Overview</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          In this tutorial we will build a model which will forecast monthly salary 
+          expenses and total headcount. Our model will address a somewhat simplified 
+          version of a real-world problem that is often solved using a spreadsheet. We 
+          will process an employee table containing start and termination dates and current 
+          salaries into a series of monthly totals for planning or forecasting. Consider 
+          the spreadsheet below, which endeavors to address this case.
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/sheet-example.png"
+        />
+        <p>
+          Using a spreadsheet to perform these calculations works, but has several weaknesses 
+          that become evident as the amount of data and number of calculations grows.
+        </p>
+        <h4>New data requires structural changes</h4>
+        <p>
+          Spreadsheets may often combine data and calculations tightly. In our example, 
+          if you want to add more employees or additional forecast dates, you have to insert 
+          rows and columns and copy formulas and formats.
+        </p>
+        <h4>Formulas are difficult to follow</h4>
+        <p>
+          Even in our simplified example, it is difficult to explain and document the various 
+          formulas used. As the complexity of a spreadsheet grows, this worsens to the point 
+          that only a handful of persons in the organization may really understand what the 
+          formulas do.
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/sheet-formulas.png"
+        />
+        <h4>Collaboration is difficult</h4>
+        <p>
+          The tight coupling of data and calculation, as well as the concentration of understanding 
+          in just a few persons make collaboration and division of tasks difficult.
+        </p>
+        <h4>Processes cannot be automated</h4>
+        <p>
+          Spreadsheets are not applications, performing any updates always requires manual work.
+        </p>
+        <h4>The Numbrz Solution</h4>
+        <p>
+          In the sections that follow, we will build a solution consisting of the following elements:
+          <ol>
+            <li>
+              Simple data tables representing our employee list and the calendar of dates we wish to 
+              plan or forecast. This data will not be commingled with calculations and will be easy 
+              to change regardless of how complex the overal system becomes. Indeed, persons responsible 
+              for maintaining such data can work separately from yet in collaboration with maintainers 
+              of other system components.
+            </li>
+            <li>
+              An easy-to-understand function that calculates salary expense and headcount. In Numbrz, 
+              functions are clear and self-documenting, unlike formulae in spreadsheets.
+            </li>
+            <li>
+              An automated workflow that uses this function to process our employee and calendar data 
+              into a destination spreadsheet that can be used for visualization and further analysis. 
+              Workflows turn data and functions into full-blown applications.
+            </li>
+          </ol>
         </p>
         <h3>Setting Up Functions</h3>
         <p>
