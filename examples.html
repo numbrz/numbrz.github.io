@@ -54,26 +54,267 @@
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
 
-        <h3>Setting Up Datasets</h3>
+        <h3 id="datasets-header">Setting Up Datasets</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          In order for our headcount workflow to work with real data we have to
+          configure three datasets: Input, Calendar, and Output. Create a GSheet
+          with three tabs titled: Employee Payroll, Calendar, and Monthly
+          Payroll. The Employee Payroll tab should match the following structure
+          and content:
         </p>
-
-        <h3>Setting Up A Workflow</h3>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/EmployeePayroll-GSheet.png"
+        />
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          The Calendar tab should match the following structure and content:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/Calendar-GSheet.png"
+        />
+        <p>
+          The Monthly Payroll tab should match the following structure and
+          content:
+        </p>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/example_screenshots/Output-GSheet.png"
+        />
+
+        <h4 id="connect-gsheets">Connecting GSheets to Numbrz</h4>
+        <p>
+          Before we can use the GSheets we created in our workflow, we need to
+          connect them to Numbrz. Connecting external data sources is easy,
+          simply click the 'plus' icon on the bottom right corner of the Data
+          tab screen and fill out the necessary information. In our case, we
+          want to connect a GSheet, which is the default external data source.
+        </p>
+        <p>
+          For each GSheet tab in our document: copy the url from the browser and
+          paste it into the form, title each dataset accordingly, and click
+          'Connect'.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/example_screenshots/gsheet-url.png"
+        />
+        <p>
+          We will also need to share our GSheet with Numbrz. To do so, copy the
+          Numbrz agent information from the dialog.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/example_screenshots/numbrz-share.png"
+        />
+        <p>
+          In Gsheets, click 'Share' in the top right corner and paste the copied
+          address into the form.
+        </p>
+        <div
+          class="ui images bordered rounded medium
+        "
+        >
+          <img
+            class="ui image "
+            src="assets/images/example_screenshots/gsheet-share.png"
+          />
+          <img
+            class="ui image "
+            src="assets/images/example_screenshots/gsheet-share-2.png"
+          />
+        </div>
+        <p>
+          The final list of datasets in Numbrz should look similar to the one
+          below:
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/datasets-final.png"
+        />
+
+        <h3 id="workflow-header">Setting Up A Workflow</h3>
+        <h4 id="workflow-overview">Overview</h4>
+        <p>
+          The purpose of this workflow is to combine the execution of the
+          previously constructed Headcount function and some basic aggregation
+          to produce summary output that can be used for planning and
+          forecasting. The workflow will:
+        </p>
+        <div class="ui ordered list">
+          <div class="item">
+            Iterate over the Employee Payroll data and apply our Calendar, which
+            is the series of dates we want to forecast or plan.
+          </div>
+          <div class="item">
+            For each combination of employee record and calendar month, execute
+            our function.
+          </div>
+          <div class="item">Total the function output by month.</div>
+          <div class="item">
+            Write the totals to the Monthly Payroll dataset previously defined.
+          </div>
+        </div>
+        <p>
+          Begin a new workflow by selecting the Workflows tab and clicking the
+          '+' in the lower right corner. You should see a dialog similar to the
+          following:
+        </p>
+        <img
+          class="ui image large bordered rounded"
+          src="assets/images/example_screenshots/add-workflow.png"
+        />
+        <p>
+          Give your workflow meaningful name like Tutorial - Headcount and
+          optionally a Scenario name, which is just an extra user-definable
+          category you may apply to your workflows. Finally, in the Source Data
+          drop down, select the Employee Payroll dataset previously configured
+          and click Create. You will now see the Workflow Builder.
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/workflow-builder.png"
+        />
+        <p>
+          Note the warning letting you know that no steps have been configured.
+          We will now add steps to make this workflow functional.
+        </p>
+        <h4 id="workflow-fill-step">Fill Data Step</h4>
+        <p>
+          The first step to add will be a Fill step. Fill produces a union of
+          input data and some other dataset. It will produce up to 300 fill
+          records for each input record. A common use of Fill is to join data
+          with a calendar of dates, which is what we will do.
+        </p>
+        <p>
+          Drag the Fill step from the palette to the right and drop it below the
+          Workflow Settings. Note that you can edit the default title 'Fill Data
+          Step' to make it more meaningful try changing the title to Apply
+          Calendar. Now select the Calendar dataset you previously created from
+          the drop down and, in the fill fields section, select the Month field.
+          Your workflow should now look like this.
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/fill-step.png"
+        />
+        <p>
+          Note the icon to the right of the step title. This is a
+          expand/collapse button. It can be helpful to collapse the
+          configurations as you complete each step, making more room on screen
+          to view the workflow without scrolling.
+        </p>
+        <h4 id="workflow-exec-step">Execute Function Step</h4>
+        <p>
+          Now we have employee payroll data and our period month ends flowing
+          through the workflow. We will use our Payroll function to actually
+          calculate the employees total salary per period.
+        </p>
+        <p>
+          To execute a function, drag an Execute step from the palette and drop
+          it below the Fill step. Give the step a name like Calculate Monthly
+          Payroll and , from the drop-down, select the function you built
+          previously. Under inputs, map workflow data elements to the
+          appropriate function input. Note that the available data fields have
+          been categorized by source.
+        </p>
+        <p>
+          Workflow Data to Function Input:
+        </p>
+        <div class="ui bulleted list">
+          <div class="item">
+            Employee Payroll -> AnnualSalary to Annual Salary
+          </div>
+          <div class="item">Employee Payroll -> StartDate to Start Date</div>
+          <div class="item">Employee Payroll -> EndDate to Term Date</div>
+          <div class="item">Calendar -> Month to Current Month</div>
+        </div>
+        <p>Your workflow will now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/exec-step.png"
+        />
+
+        <h4 id="workflow-aggr-step">Aggregate Step</h4>
+        <p>
+          Our goal is to produce a forecast by month of payroll costs from our
+          employee data and calendar. To do this, we need to aggregate the
+          payroll data by month. Drag an Aggregate step from the palette, and
+          drop it below the Execute step. Give it a title like Sum Salaries by
+          Period.
+        </p>
+        <p>
+          Under Aggregate, select Sum for Calculation and Monthly
+          Payroll->MonthlySalary for Field. Click '+' to add this calculation.
+          Add another calculation, Sum on Monthly Payroll->Monthly Headcount,
+          click '+' to add this calculation. Under Group By, select Tutorial
+          Calendar->Month Click '+' to add this group.
+        </p>
+        <p>Your workflow will now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/aggr-step.png"
+        />
+
+        <h4 id="workflow-output-step">Output Step</h4>
+        <p>
+          This will be the final step in this workflow. It will store results in
+          the Monthly Payroll dataset (A linked Google Sheet) that was created
+          previously. In addition to input data and the results of step
+          processing, several built-in data fields are available. We will use
+          several of these to uniquely identify each execution of our workflow,
+          so that the output data can be used to compare different scenarios.
+        </p>
+        <p>
+          Start by dragging the Output step from the palette and dropping it
+          below the Aggregate step created above. Give it a title like Output
+          Monthly Salaries.
+        </p>
+        <p>
+          Under outputs, map workflow data elements to the appropriate dataset
+          field. Note that the available data fields have been categorized.
+        </p>
+        <p>
+          Workflow Data to Output Dataset:
+        </p>
+        <div class="ui bulleted list">
+          <div class="item">Builtins -> Run ID to Run ID</div>
+          <div class="item">Builtins -> Run By to Run By</div>
+          <div class="item">Builtins -> Time Started to Run At</div>
+          <div class="item">Calendar -> Month to Month</div>
+          <div class="item">Aggregate -> Sum of Monthly Salary to Salary</div>
+          <div class="item">
+            Aggregate -> Sum of Monthly Headcount to Headcount
+          </div>
+        </div>
+        <p>Your workflow should now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/output-step.png"
+        />
+
+        <h4 id="workflow-status">Running Headcount Workflow</h4>
+        <p>
+          Once all steps have been added, and no configuration warnings are
+          displayed, the workflow is ready to run.
+        </p>
+        <p>
+          Click Run Workflow in the lower right corner to execute the workflow.
+          You will see a status page. Note that workflows run in the background,
+          so there is no need to wait on the status page, however in this case,
+          the workflow should complete in just a few seconds, so we'll watch
+          what happens. If all goes as it should, you will see the following
+          after a few seconds:
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/run-status.png"
+        />
+        <p>
+          The counts displayed on the final status may be different for you,
+          depending on how much sample data you added to your Google Sheets.
+          Have a look at your Monthly Payroll sheet. You should see one row of
+          data for each month in your calendar.
         </p>
       </div>
       <div id="sidebar-right">
@@ -85,9 +326,38 @@
           <div class="content">
             <div class="ui bulleted list">
               <div class="item"><a href="">Overview</a></div>
-              <div class="item"><a href="">Setting up functions</a></div>
-              <div class="item"><a href="">Setting up Datasets</a></div>
-              <div class="item"><a href="">Setting up a workflow</a></div>
+              <div class="item"><a href="">Setting Up Functions</a></div>
+              <div class="item">
+                <a href="#datasets-header">Setting Up Datasets</a>
+                <div class="list">
+                  <div class="item">
+                    <a href="#connect-gsheets">Connecting GSheets to Numbrz</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a href="#workflow-header">Setting Up A Workflow</a>
+                <div class="list">
+                  <div class="item">
+                    <a href="#workflow-overview">Overview</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-fill-step">Fill Data Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-exec-step">Execute Function Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-aggr-step">Aggregate Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-output-step">Output Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-status">Running Headcount Workflow</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

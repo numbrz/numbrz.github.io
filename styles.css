@@ -73,9 +73,17 @@ body {
   padding-left: 20px;
 }
 
+#content img {
+  margin: 20px;
+  padding: 10px;
+}
+
 #content h3,
 #content h4 {
   font-weight: 100;
+}
+#content .list {
+  margin-left: 40px;
 }
 
 #sidebar-right {
@@ -87,7 +95,7 @@ body {
 #sidebar-right .accordion {
   list-style-type: none;
   margin-top: 40px;
-  margin-left: 30px;
+  margin-left: 15px;
   padding-inline-start: 0;
   position: fixed;
   top: 100px;
