@@ -156,25 +156,94 @@
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
         <h2 id="data-anchor">Data</h2>
-        <h3>Overview</h3>
+        <h3 id="data-overview">Overview</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          <em>Datasets</em> are the unit of tabular data used by other components of the 
+          Numbrz ecosystem. Numbrz can read and write data from several sources. As 
+          the system continues to be developed, more sources will be added. Numbrz processes 
+          data by reading rows from a Dataset or by writing rows to a Dataset.
+          Data is not imported into Numbrz, but rather is read or written via links
+          to the data where it already resides. The datasets that are available to you are listed 
+          in the Datasets tab of the Numbrz application. 
         </p>
-        <h3>Supported Data Sources</h3>
+        <h3 id="data-create">Creating Datasets</h3>
+        <h4>Google Sheets</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Google Sheets is a popular online spreadsheet application. Numbrz natively 
+          supports reading from and writing to Sheets with a couple of important caveats:
+        </p>
+        <ul>
+          <li>Your sheet data must be in tabular form with a single row of header labels.</li>
+          <li>The table must start at cell A1 and have less than 52 columns.</li>
+          <li>The table must have at least one row (i.e. the row starting at A2) of 
+            representative data (this is how Numbrz determines the data type of the cells).</li>
+        </ul>
+        <p>
+          To add a Google Sheets dataset, click the '+' in the lower right corner of the Data tab.
+          You will see the Connect Data dialog, Google Sheets is the default selection.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/connect-sheets.png"
+        />
+        <p>
+          Before you can complete the link, you must grant access to the sheet
+          to the Numbrz agent account. This is not done in the Numbrz application, but rather
+          by using the <em>Share</em> button on the spreadsheet itself. Simply paste
+          the email address shown in the Connect dialog into the <em>People</em> field and click 
+          <em>Done</em>. If prompted, elect to 'Skip sending invitations' and click <em>OK</em>.
+        </p>
+        <p>
+          While in Sheets, copy the full URL of the sheet from your browsers URL bar, then go
+          to Numbrz and paste it into the Numbrz Connect dialog. Give your dataset a meaningful 
+          name and click <em>Connect</em>.
+        </p>
+        <h4>Snowflake</h4>
+        <p>
+          Snowflake is a cloud-based data warehouse gaining popularity in many organizations.
+          Numbrz natively supports reading from and writing to Snowflake database tables.
+        </p>
+        <p>
+          To add a Snowflake dataset, click the '+' in the lower right corner of the Data tab.
+          You will see the Connect Data dialog, now click the Snowflake icon.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/connect-snowflake.png"
+        />
+        <p>
+          Before you can complete the link, you will need the Database URI. The URI has the
+          form:
+        </p>
+        <pre>
+    [ProjectID]/[DatabaseName]/[SchemaName]?warehouse=[WarehouseName]&amp;region=[AWSRegionCode]
+         - e.g. -
+    RCXXXXX/snowflake_sample_data/tpch_sf1?warehouse=test&region=us-east-1
+        </pre>
+        <p>
+          In addition, you will need a username and password with access to the table you wish 
+          to link. You may need to contact your Snowflake administrator to obtain this information.
+          Once you have the required information, complete the dialog and click <em>Connect</em>.
+        </p>
+        <h3 id="data-change">Changing Datasets</h3>
+        <p>
+          The datasets that are available to you are listed in the Datasets tab of the Numbrz
+          application. To change a dataset, click on the dataset you wish to work with to 
+          display its <em>metadata</em>. Numbrz linked data works by storing a small amount 
+          of information about the location and structure of your data. Note that it does 
+          NOT store any of the actual data.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/dataset-metadata.png"
+        />
+        <p>
+          From time to time, this stored information may become out of date, for example, 
+          if you add new columns or change the data type of a field or cell. You can 
+          easily solve most such issues simply by clicking the <em>Refresh</em> button. 
+          In some cases you may need to select new data types from the drop-down menu under 
+          <em>Column Type</em>. This screen also allows you to update column labels if
+          you so desire.
         </p>
         <h2 id="workflows-anchor">Workflows</h2>
         <h3>Overview</h3>
@@ -290,8 +359,9 @@
           </div>
           <div class="content">
             <div class="ui bulleted list">
-              <div class="item"><a href="">Overview</a></div>
-              <div class="item"><a href="">Supported Data Sources</a></div>
+              <div class="item"><a href="#data-overview">Overview</a></div>
+              <div class="item"><a href="#data-create">Creating Datasets</a></div>
+              <div class="item"><a href="#data-change">Changing Datasets</a></div>
             </div>
           </div>
           <div class="title">
