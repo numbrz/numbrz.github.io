@@ -261,15 +261,20 @@
           When executed, a workflow starts by iterating over all the rows in the input dataset.
           It augments these rows with certain information about the workflow itself, and then
           passes these augmented rows of data through its sequence of steps, one-at-a-time, 
-          until all rows have been seen by all steps.
+          until all rows have been seen by all steps. Conceptually, this looks a bit like this:
         </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/row-processing.png"
+        />
         <p>
-          Steps that return results, for example the <em>Execute Function</em> step 
-          (discussed below), have their results added to the row. In this way, downstream
-          steps may further operate on the results of prior steps. In addition to augmenting 
-          the data elements in a single row, some steps may collapse data, emitting fewer rows 
-          from the step than it initially received; while others may expand it, emitting more 
-          rows than the step initially received.
+          In real-world, non-trivial workflows processing is somewhat less straightforward, as steps 
+          may change both the structure and number of rows as they pass through. Steps that 
+          return results, for example the <em>Execute Function</em> step (discussed below), 
+          have their results added to the row. In this way, downstream steps may further operate 
+          on the results of prior steps. In addition to augmenting the data elements in a single 
+          row, some steps may collapse data, emitting fewer rows from the step than it initially 
+          received; while others may expand it, emitting more rows than the step initially received.
         </p>
         <p>
           The graphic below shows how data values in individual input rows may change depending
@@ -304,6 +309,16 @@
           input row, 10 rows are emitted. Fill steps are often used to augment 
           input with a calendar of dates, for time-based processing.
         </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/fill-step.png"
+        />
+        <p>
+          To configure a fill step, drag the fill icon from the palette and place
+          it in your workflow. Select the fill dataset from the <em>Select Dataset</em>
+          drop-down menu. In the resulting field list, check the fields you want to
+          include in the row this step will emit.
+        </p>
         <h4>Execute</h4>
         <p>
           The <em>Execute Function</em> step uses data from the input rows to
@@ -314,22 +329,48 @@
           the accumulation of results to chain function calls, allowing subsequent 
           executions to build on the results of prior executions. 
         </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/exec-step.png"
+        />
+        <p>
+          To configure the execute step, drag the execute icon from the palette and place
+          it in your workflow. Use the <em>Select Function</em> drop-down menu to choose
+          the desired function, then map data elements to the functions inputs. All the 
+          function outputs will automatically be available after execution.
+        </p>
         <h4>Aggregate</h4>
         <p>
           The <em>Aggregate</em> step sums values in input rows according to a defined 
           grouping. The aggregate step is a step that both substantially changes the values 
           in the data rows it emits, as well as collapsing the number of data rows emitted.
         </p>
-
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aggr-step.png"
+        />
+        <p>
+          To configure the aggregate step, drag the aggregate icon from the palette and place
+          it in your workflow. Add calculated fields using the <em>Calculation</em> and
+          <em>Field</em> drop-down menus. Add the calculation by clicking '+'. You may repeat this 
+          process for additional calculated fields. Finally, add at least one grouping
+          using the <em>Group by</em> drop-down menu, click '+' to add the grouping.
+        </p>
         <h4>Filter</h4>
         <p>
-          The <em>Filter</em> step will reduce the number of rows emitted by 
-          passing the row through a user-definable filter. Only rows that meet
+          The <em>Filter</em> step will potentially reduce the number of rows emitted 
+          by passing the row through a user-definable filter. Only rows that meet
           the criteria specified by the filter will pass through the step. The
-          filter step does not change the individual values in the row 
-          in any way.
+          filter step does not change the individual values in the row in any way.
         </p>
-
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/filter-step.png"
+        />
+        <p>
+          To configure the filter step, drag the filter icon from the palette and place
+          it in your workflow. 
+        </p>
         <h4>Output</h4>
         <p>
           The <em>Output</em> step writes data to a Numbrz dataset. During step
@@ -339,9 +380,25 @@
           The output step does not change the individual values in the row 
           in any way.
         </p>
-        <p>The output step also supports an optional filter. The filter controls
-          what data will be written to the output dataset. All data rows
-          still pass through the step to any following steps.
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/output-step.png"
+        />
+        <p> 
+          To configure the output step, drag the output icon from the palette and place
+          it in your workflow. Use the <em>Select Dataset</em> drop-down menu to
+          select the dataset you want to write to. Then map the workflow data fields
+          to their respective dataset fields.
+        </p>
+        <p>The output step also supports these additional features:
+          <ul>
+            <li>An optional filter that controls what data will be written to the output 
+              dataset. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target dataset when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
         </p>
         <h4>AWS Output</h4>
         <p>
@@ -352,9 +409,24 @@
           The output step does not change the individual values in the row 
           in any way.
         </p>
-        <p>The AWS output step also supports an optional filter. The filter controls
-          what data will be written to the output file. All data rows
-          still pass through the step to any following steps.
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aws-step.png"
+        />
+        <p> 
+          To configure the AWS output step, drag the AWS output icon from the palette and place
+          it in your workflow.
+        </p>
+        <p>The AWS output step also supports these additional features:
+          <ul>
+            <li>The ability to change the field delimiter in the output file, ',' is the default.
+            <li>An optional filter that controls what data will be written to the output 
+              file. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target file when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
         </p>
 
         <h2 id="projects-anchor">Projects</h2>
