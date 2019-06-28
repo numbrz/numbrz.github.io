@@ -421,8 +421,37 @@
         />
         <p>
           To configure the filter step, drag the filter icon from the palette and place
-          it in your workflow. 
+          it in your workflow. The criteria you add to filters can compare data values to a 
+          user-entered value, or to the values of other data in the row. 
+          Add criteria to the filter by clicking <em>Add Filter</em> and:
         </p>
+        <ol>
+          <li>selecting a data element using the <em>Field</em> drop-down menu.</li>
+          <li>selecting an comparison using the <em>Operation</em> drop-down menu.</li>
+          <li>entering a value or selecting a data element to compare with.</li>
+          <li>Clicking the '+' to add your criteria.
+        </ol>
+        <p>
+          You may repeat the process above for as many fields as you wish. When you
+          create criteria this way, all of the comparisons must be true for the
+          row to pass the filter. In the example below the Level must be Bronze AND
+          the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/and-filter.png"
+        />
+        <p>
+          You can also create multi-condition filters where any of the criteria
+          may be true for the row to pass. To do this, add your first criteria
+          as described above, then click <em>Add OR Filter</em>. Add your criteria using the 
+          drop-down menus and clicking '+' also as described above. In the example
+          below, the Level must be Bronze OR the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/or-filter.png"
+        />
         <h4 id="output-step">Output</h4>
         <p>
           The <em>Output</em> step writes data to a Numbrz dataset. During step
