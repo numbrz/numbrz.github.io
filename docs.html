@@ -513,7 +513,32 @@
         
         <h3 id="workflow-run">Running Workflows</h3>
         <p>
-          
+          To run your workflow, open it from the Workflows list and click the <em>Run Workflow</em>
+          button in the lower right corner. A status screen will be displayed. Note that workflows
+          execute in the Numbrz system as background tasks, so you do not need to wait on the
+          status screen for the workflow to complete. 
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/wf-status.png"
+        />
+        <p>
+          Depending upon how long the workflow takes to complete, the status page may display
+          different information. All workflows go through the following phases:
+        </p>
+        <ul>
+          <li>Queued - the workflow run request is received, and the workflow is awaiting execution.</li>
+          <li>Running - the workflow is processing, you will see per-step totals begin to increment.</li>
+          <li>Completed - the workflow has finished running.</li>
+        </ul>
+        <p>
+          Workflows may also display a <em>Failed</em> status. This status will be accompanied 
+          by additional messages describing the problem.
+        </p>
+        <p>
+          If there is a problem with the workflow or it is behaving unexpectedly, the workflow may be 
+          cancelled by clicking the <em>Cancel Workflow</em> button in the lower right corner of
+          the status screen.
         </p>
 
         <h2 id="projects-anchor">Projects</h2>
