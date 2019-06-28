@@ -165,6 +165,17 @@
           already resides. The datasets that are available to you are listed in
           the Datasets tab of the Numbrz application.
         </p>
+        <p>
+          <em>Working with Data in Numbrz</em><br/>
+          Your Datasets are organized under the <em>Data</em> tab of the Numbrz application
+          or in a <a href="#projects-anchor">Project</a> that you have established. You can delete a 
+          dataset you no longer want by clicking the <em>Delete</em> icon on the workflow list item. 
+          To change an existing dataset, click its title.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/data-list.png"
+        />
         <h3 id="data-create">Creating Datasets</h3>
         <h4>Google Sheets</h4>
         <p>
@@ -274,21 +285,24 @@
           datasets.
         </p>
         <p>
-          <em>How do workflows work?</em><br />
-          When executed, a workflow starts by iterating over all the rows in the
-          input dataset. It augments these rows with certain information about
-          the workflow itself, and then passes these augmented rows of data
-          through its sequence of steps, one-at-a-time, until all rows have been
-          seen by all steps.
+          <em>How do workflows work?</em><br/>
+          When executed, a workflow starts by iterating over all the rows in the input dataset.
+          It augments these rows with certain information about the workflow itself, and then
+          passes these augmented rows of data through its sequence of steps, one-at-a-time, 
+          until all rows have been seen by all steps. Conceptually, this looks a bit like this:
         </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/row-processing.png"
+        />
         <p>
-          Steps that return results, for example the
-          <em>Execute Function</em> step (discussed below), have their results
-          added to the row. In this way, downstream steps may further operate on
-          the results of prior steps. In addition to augmenting the data
-          elements in a single row, some steps may collapse data, emitting fewer
-          rows from the step than it initially received; while others may expand
-          it, emitting more rows than the step initially received.
+          In a real-world, non-trivial workflow, processing is somewhat less straightforward. Steps 
+          may change both the structure and number of rows as they pass through. Steps that 
+          return results, the <em>Execute Function</em> step (discussed below) for example, 
+          have their results added to the row. In this way, downstream steps may further operate 
+          on the results of prior steps. In addition to augmenting the data elements in a single 
+          row, some steps may collapse data, emitting fewer rows from the step than it initially 
+          received; while others may expand it, emitting more rows than the step initially received.
         </p>
         <p>
           The graphic below shows how data values in individual input rows may
@@ -299,21 +313,62 @@
           class="ui image bordered rounded big"
           src="assets/images/docs_screenshots/augmented-rows.png"
         />
-
+        
+        <p>
+          <em>Working with Numbrz workflows</em><br/>
+          Your workflows are organized under the <em>Workflows</em> tab of the Numbrz application
+          or in a <a href="#projects-anchor">Project</a> that you have established. You can delete a 
+          workflow you no longer want by clicking the <em>Delete</em> icon on the workflow list item. 
+          To edit an existing workflow, click its title.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/workflow-list.png"
+        />
+        
         <h3 id="workflow-create">Creating Workflows</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Before you create a workflow, you should feel comfortable with the concepts described
+          in the <a href="#functions-anchor">Functions</a> and <a href="#data-anchor">Datasets</a> 
+          sections above. You should also have linked the appropriate datasets and produced 
+          at least one function required by your use-case. Note, however, that functions are not 
+          a requirement to create workflows, but without them, workflows do little other than move 
+          data around.
+        </p>
+        <p>
+          To create a workflow, go the the <em>workflows</em> tab of the Numbrz application and
+          click the '+' in the lower right corner. You will be prompted to give your workflow
+          a name and to select its <em>Input Dataset</em>. Click <em>Create</em> to display the
+          workflow builder.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/wf-builder-intro.png"
+        />
+        <p>
+          From this point on, building a workflow is simply a matter of configuring its steps. To 
+          add steps to a workflow, select the desired step type from the palette and drag it into
+          the position desired. Steps execute in sequence, and the order they run is the order
+          you see them in the workflow builder. 
+        </p>
+        <p>
+          Steps displayed in the workflow share some common controls shown in the image below. 
+          You may edit the steps title. It is recommended that all your steps have a descriptive 
+          title. You can also collapse the steps configuration, making more room on the screen.
+          Finally, if there are errors in a steps configuration, they will be displayed as
+          a warning. Workflows with unresolved configuration warnings will not run.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/step-common.png"
+        />
+        <p>
+          In the sections that follow, each of the available workflow steps are documented in detail.
         </p>
 
         <h3 id="workflow-steps">Workflow Steps</h3>
 
-        <h4>Fill</h4>
+        <h4 id="fill-step">Fill</h4>
         <p>
           The <em>Fill</em> step combines rows from the input dataset with rows
           from a secondary dataset to produce a cross-join of the two datasets.
@@ -323,7 +378,17 @@
           input row, 10 rows are emitted. Fill steps are often used to augment
           input with a calendar of dates, for time-based processing.
         </p>
-        <h4>Execute</h4>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/fill-step.png"
+        />
+        <p>
+          To configure a fill step, drag the fill icon from the palette and place
+          it in your workflow. Select the fill dataset from the <em>Select Dataset</em>
+          drop-down menu. In the resulting field list, check the fields you want to
+          include in the row this step will emit.
+        </p>
+        <h4 id="exec-step">Execute</h4>
         <p>
           The <em>Execute Function</em> step uses data from the input rows to
           run a Numbrz Function. The step allows the user to map data elements
@@ -333,38 +398,108 @@
           leverage the accumulation of results to chain function calls, allowing
           subsequent executions to build on the results of prior executions.
         </p>
-        <h4>Aggregate</h4>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/exec-step.png"
+        />
+        <p>
+          To configure the execute step, drag the execute icon from the palette and place
+          it in your workflow. Use the <em>Select Function</em> drop-down menu to choose
+          the desired function, then map data elements to the functions inputs. All the 
+          function outputs will automatically be available after execution.
+        </p>
+        <h4 id="aggr-step">Aggregate</h4>
         <p>
           The <em>Aggregate</em> step sums values in input rows according to a
           defined grouping. The aggregate step is a step that both substantially
           changes the values in the data rows it emits, as well as collapsing
           the number of data rows emitted.
         </p>
-
-        <h4>Filter</h4>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aggr-step.png"
+        />
         <p>
-          The <em>Filter</em> step will reduce the number of rows emitted by
-          passing the row through a user-definable filter. Only rows that meet
-          the criteria specified by the filter will pass through the step. The
-          filter step does not change the individual values in the row in any
-          way.
+          To configure the aggregate step, drag the aggregate icon from the palette and place
+          it in your workflow. Add calculated fields using the <em>Calculation</em> and
+          <em>Field</em> drop-down menus. Add the calculation by clicking '+'. You may repeat this 
+          process for additional calculated fields. Finally, add at least one grouping
+          using the <em>Group by</em> drop-down menu, click '+' to add the grouping.
         </p>
-
-        <h4>Output</h4>
+        <h4 id="filter-step">Filter</h4>
+        <p>
+          The <em>Filter</em> step will potentially reduce the number of rows emitted 
+          by passing the row through a user-definable filter. Only rows that meet
+          the criteria specified by the filter will pass through the step. The
+          filter step does not change the individual values in the row in any way.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/filter-step.png"
+        />
+        <p>
+          To configure the filter step, drag the filter icon from the palette and place
+          it in your workflow. The criteria you add to filters can compare data values to a 
+          user-entered value, or to the values of other data in the row. 
+          Add criteria to the filter by clicking <em>Add Filter</em> and:
+        </p>
+        <ol>
+          <li>selecting a data element using the <em>Field</em> drop-down menu.</li>
+          <li>selecting an comparison using the <em>Operation</em> drop-down menu.</li>
+          <li>entering a value or selecting a data element to compare with.</li>
+          <li>Clicking the '+' to add your criteria.
+        </ol>
+        <p>
+          You may repeat the process above for as many fields as you wish. When you
+          create criteria this way, all of the comparisons must be true for the
+          row to pass the filter. In the example below the Level must be Bronze AND
+          the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded medium"
+          src="assets/images/docs_screenshots/and-filter.png"
+        />
+        <p>
+          You can also create multi-condition filters where any of the criteria
+          may be true for the row to pass. To do this, add your first criteria
+          as described above, then click <em>Add OR Filter</em>. Add your criteria using the 
+          drop-down menus and clicking '+' also as described above. In the example
+          below, the Level must be Bronze OR the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded medium"
+          src="assets/images/docs_screenshots/or-filter.png"
+        />
+        <h4 id="output-step">Output</h4>
         <p>
           The <em>Output</em> step writes data to a Numbrz dataset. During step
-          configuration, elements of the data rows passing through the step are
-          mapped to fields in the dataset. Output steps still pass the data to
-          downstream steps, allowing outputs to be chained in interesting ways.
-          The output step does not change the individual values in the row in
-          any way.
+          configuration, elements of the data rows passing through the step are 
+          mapped to fields in the dataset. Output steps still pass the data 
+          to downstream steps, allowing outputs to be chained in interesting ways.
+          The output step does not change the individual values in the row 
+          in any way.
         </p>
-        <p>
-          The output step also supports an optional filter. The filter controls
-          what data will be written to the output dataset. All data rows still
-          pass through the step to any following steps.
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/output-step.png"
+        />
+        <p> 
+          To configure the output step, drag the output icon from the palette and place
+          it in your workflow. Use the <em>Select Dataset</em> drop-down menu to
+          select the dataset you want to write to. Then map the workflow data fields
+          to their respective dataset fields.
         </p>
-        <h4>AWS Output</h4>
+        <p>The output step also supports these additional features:
+          <ul>
+            <li>An optional filter that controls what data will be written to the output 
+              dataset. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target dataset when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
+        </p>
+        <h4 id="aws-step">AWS Output</h4>
         <p>
           The <em>AWS Output</em> step writes data to Amazon S3 as CSV. During
           step configuration, elements of the data rows passing through the step
@@ -373,10 +508,84 @@
           interesting ways. The output step does not change the individual
           values in the row in any way.
         </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aws-step.png"
+        />
+        <p> 
+          To configure the AWS output step, drag the AWS output icon from the palette and place
+          it in your workflow. You will need some information about your AWS deployment, as
+          well as API credentials in order to connect to S3. Your AWS administrator may need
+          to assist you in obtaining this information. Enter:
+        </p>
+        <ul>
+          <li>Access Key - first part of credentials for Amazon S3</li>
+          <li>Secret Key - second part of credentials for Amazon S3</li>
+          <li>Region Code - the AWS region in which your S3 bucket is located</li>
+          <li>Bucket Name = the name of the S3 bucket you want to save to
+          <li>File Name - the file name
+        </ul>
+         <p>
+          Once the S3 information above has been completed, select the data elements you wish
+          to include in the file by clicking the checkbox next to the element name. Note the
+          <em>Format</em> drop-down menu, at this time, changing formats is supported for 
+          date type fields, for date fields, selecting a format of <em>Time Text</em> is
+          recommended for most cases. 
+        </p>
         <p>
-          The AWS output step also supports an optional filter. The filter
-          controls what data will be written to the output file. All data rows
-          still pass through the step to any following steps.
+          <em>S3 File Names</em><br/>
+          You may use S3 path separator characters in the file name to place your files in 
+          a folder hierarchy. You can create dynamic file names using variable replacement. 
+          Variables take the form: $variable_name. The following variable may be used in file 
+          names:
+        </p>
+        <ul>
+          <li>$jobname - the name of the workflow</li>
+          <li>$scenario - the value of the <em>Scenario</em> name given to workflow</li>
+          <li>$runid - the unique execution identifier for the current workflow run</li>
+          <li>$runby - the name of the user who executed the workflow</li>
+          <li>$started - the timestamp (in numeric form) of the workflow execution</li>
+        </ul>
+        <p>The AWS output step also supports these additional features:
+          <ul>
+            <li>The ability to change the field delimiter in the output file, ',' is the default.
+            <li>An optional filter that controls what data will be written to the output 
+              file. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target file when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
+        </p>
+        
+        <h3 id="workflow-run">Running Workflows</h3>
+        <p>
+          To run your workflow, open it from the Workflows list and click the <em>Run Workflow</em>
+          button in the lower right corner. A status screen will be displayed. Note that workflows
+          execute in the Numbrz system as background tasks, so you do not need to wait on the
+          status screen for the workflow to complete. 
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/wf-status.png"
+        />
+        <p>
+          Depending upon how long the workflow takes to complete, the status page may display
+          different information. All workflows go through the following phases:
+        </p>
+        <ul>
+          <li>Queued - the workflow run request is received, and the workflow is awaiting execution.</li>
+          <li>Running - the workflow is processing, you will see per-step totals begin to increment.</li>
+          <li>Completed - the workflow has finished running.</li>
+        </ul>
+        <p>
+          Workflows may also display a <em>Failed</em> status. This status will be accompanied 
+          by additional messages describing the problem.
+        </p>
+        <p>
+          If there is a problem with the workflow or it is behaving unexpectedly, the workflow may be 
+          cancelled by clicking the <em>Cancel Workflow</em> button in the lower right corner of
+          the status screen.
         </p>
 
         <h2 id="projects-anchor">Projects</h2>
@@ -439,14 +648,15 @@
               <div class="item">
                 <div><a href="#workflow-steps">Workflow Steps</a></div>
                 <div class="list">
-                  <div class="item"><a href="">Fill</a></div>
-                  <div class="item"><a href="">Execute</a></div>
-                  <div class="item"><a href="">Aggregate</a></div>
-                  <div class="item"><a href="">Filter</a></div>
-                  <div class="item"><a href="">Output</a></div>
-                  <div class="item"><a href="">AWS Output</a></div>
+                  <div class="item"><a href="#fill-step">Fill</a></div>
+                  <div class="item"><a href="#exec-step">Execute</a></div>
+                  <div class="item"><a href="#aggr-step">Aggregate</a></div>
+                  <div class="item"><a href="#filter-step">Filter</a></div>
+                  <div class="item"><a href="#output-step">Output</a></div>
+                  <div class="item"><a href="#aws-step">AWS Output</a></div>
                 </div>
               </div>
+              <div class="item"><a href="#workflow-run">Running Workflows</a></div>
             </div>
           </div>
           <div class="title">
