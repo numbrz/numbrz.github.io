@@ -82,6 +82,10 @@ body {
   padding: 10px;
 }
 
+#content i {
+  margin-left: 20px;
+}
+
 #content h3,
 #content h4 {
   font-weight: 100;

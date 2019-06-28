@@ -32,99 +32,97 @@
 
     <div id="content-wrapper">
       <div id="content">
-        
-        <h2 id="functions-anchor">Functions</h2>
-        <h3>Overview</h3>
+        <h2 id="functions-header">Functions</h2>
+        <h3 id="functions-overview">Overview</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Numbrz functions are an integral part to the development of workflows
+          and offer a truly unique way of creating and laying out calculations.
         </p>
-        <h3>Canvas</h3>
+        <h3 id="functions-canvas">Canvas</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Numbrz modeler canvas allows users to quickly create and connect
+          pieces of logic that will eventually drive the execution of the
+          workflow. Every Numbrz function is represented by a single canvas
+          which may contain any number of widgets.
         </p>
-        <h3>Built-in Functions</h3>
-        <h4>Data</h4>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/docs_screenshots/canvas.png"
+        />
+
+        <h3 id="widgets-header">Widgets</h3>
+        <h4 id="widgets-overview">Overview</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Numbrz provides users with a number of pre-built widgets that can be
+          combined, just like lego pieces, to create complex calculations and
+          relationships between data. All widgets support a set of basic
+          interactions: creation, deletion, insertion and deletion of rows or
+          columns, rearrangement of rows or columns, and editing of any cell.
+          The following video shows these interactions in action:
         </p>
+        <div id="widgets-video">
+          <i class="icon circle outline play huge"></i>
+        </div>
+        <div class="ui modal">
+          <i class="close icon"></i>
+          <div class="header">
+            Basic Widget Interactions
+          </div>
+          <div class="image content">
+            <video width="860" height="580" controls>
+              <source
+                src="assets/images/docs_screenshots/widget-interactions.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <h4 id="widgets-data">Data</h4>
+        <p>
+          This is the most basic widget inside Numbrz and it is most commonly
+          used to store static variables that get passed through the function
+          during runtime of a workflow. Data widget is also an integral part of
+          the lookup widget which will cover in the next section.
+        </p>
+        <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/data-widget.png"
+        />
+
+        <h4>Lookup</h4>
+        <p></p>
+
         <h4>Date</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Date widgets, as the name suggests, are used to store and format
+          dates. Simply fill out the date column in the date widget and Numbrz
+          will format the rest.
         </p>
-        <h4>Lookup</h4>
+        <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/date-widget.png"
+        />
+
+        <h4 id="widgets-arithmetic">Arithmetic</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Arithmetic widgets can be used to perform basic math but in conjuction
+          with Numbrz canvas they become powerful tools for representing complex
+          calculations. Currently, Numbrz has 4 built-in arithmetic widgets:
+          Sum, Product, Subtraction, and Division. The bottom row of the
+          arithmetic widget represents the calculated row. Depending on the
+          widget, each cell of the calculated row is either the sum, product,
+          difference, or the quotient of all the cells in that column. To see
+          the calculated value across the row users can add a result column. To
+          add a result column, locate the top right corner of the widget and
+          click 'Total' as displayed in the image below:
         </p>
-        <h4>Sum</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h4>Subtraction</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h4>Multiplication</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <h4>Division</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/arithmetic-total-col.png"
+        />
+
         <h4>Switch</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -158,29 +156,40 @@
         <h2 id="data-anchor">Data</h2>
         <h3 id="data-overview">Overview</h3>
         <p>
-          <em>Datasets</em> are the unit of tabular data used by other components of the 
-          Numbrz ecosystem. Numbrz can read and write data from several sources. As 
-          the system continues to be developed, more sources will be added. Numbrz processes 
-          data by reading rows from a Dataset or by writing rows to a Dataset.
-          Data is not imported into Numbrz, but rather is read or written via links
-          to the data where it already resides. The datasets that are available to you are listed 
-          in the Datasets tab of the Numbrz application. 
+          <em>Datasets</em> are the unit of tabular data used by other
+          components of the Numbrz ecosystem. Numbrz can read and write data
+          from several sources. As the system continues to be developed, more
+          sources will be added. Numbrz processes data by reading rows from a
+          Dataset or by writing rows to a Dataset. Data is not imported into
+          Numbrz, but rather is read or written via links to the data where it
+          already resides. The datasets that are available to you are listed in
+          the Datasets tab of the Numbrz application.
         </p>
         <h3 id="data-create">Creating Datasets</h3>
         <h4>Google Sheets</h4>
         <p>
-          Google Sheets is a popular online spreadsheet application. Numbrz natively 
-          supports reading from and writing to Sheets with a couple of important caveats:
+          Google Sheets is a popular online spreadsheet application. Numbrz
+          natively supports reading from and writing to Sheets with a couple of
+          important caveats:
         </p>
         <ul>
-          <li>Your sheet data must be in tabular form with a single row of header labels.</li>
-          <li>The table must start at cell A1 and have less than 52 columns.</li>
-          <li>The table must have at least one row (i.e. the row starting at A2) of 
-            representative data (this is how Numbrz determines the data type of the cells).</li>
+          <li>
+            Your sheet data must be in tabular form with a single row of header
+            labels.
+          </li>
+          <li>
+            The table must start at cell A1 and have less than 52 columns.
+          </li>
+          <li>
+            The table must have at least one row (i.e. the row starting at A2)
+            of representative data (this is how Numbrz determines the data type
+            of the cells).
+          </li>
         </ul>
         <p>
-          To add a Google Sheets dataset, click the '+' in the lower right corner of the Data tab.
-          You will see the Connect Data dialog, Google Sheets is the default selection.
+          To add a Google Sheets dataset, click the '+' in the lower right
+          corner of the Data tab. You will see the Connect Data dialog, Google
+          Sheets is the default selection.
         </p>
         <img
           class="ui image bordered rounded large"
@@ -188,33 +197,37 @@
         />
         <p>
           Before you can complete the link, you must grant access to the sheet
-          to the Numbrz agent account. This is not done in the Numbrz application, but rather
-          by using the <em>Share</em> button on the spreadsheet itself. Simply paste
-          the email address shown in the Connect dialog into the <em>People</em> field and click 
-          <em>Done</em>. If prompted, elect to 'Skip sending invitations' and click <em>OK</em>.
+          to the Numbrz agent account. This is not done in the Numbrz
+          application, but rather by using the <em>Share</em> button on the
+          spreadsheet itself. Simply paste the email address shown in the
+          Connect dialog into the <em>People</em> field and click <em>Done</em>.
+          If prompted, elect to 'Skip sending invitations' and click
+          <em>OK</em>.
         </p>
         <p>
-          While in Sheets, copy the full URL of the sheet from your browsers URL bar, then go
-          to Numbrz and paste it into the Numbrz Connect dialog. Give your dataset a meaningful 
-          name and click <em>Connect</em>.
+          While in Sheets, copy the full URL of the sheet from your browsers URL
+          bar, then go to Numbrz and paste it into the Numbrz Connect dialog.
+          Give your dataset a meaningful name and click <em>Connect</em>.
         </p>
         <h4>Snowflake</h4>
         <p>
-          Snowflake is a cloud-based data warehouse gaining popularity in many organizations.
-          Numbrz natively supports reading from and writing to Snowflake database tables.
+          Snowflake is a cloud-based data warehouse gaining popularity in many
+          organizations. Numbrz natively supports reading from and writing to
+          Snowflake database tables.
         </p>
         <p>
-          To add a Snowflake dataset, click the '+' in the lower right corner of the Data tab.
-          You will see the Connect Data dialog, now click the Snowflake icon.
+          To add a Snowflake dataset, click the '+' in the lower right corner of
+          the Data tab. You will see the Connect Data dialog, now click the
+          Snowflake icon.
         </p>
         <img
           class="ui image bordered rounded large"
           src="assets/images/docs_screenshots/connect-snowflake.png"
         />
         <p>
-          Before you can complete the link, you will need the Database URI. You may need to 
-          contact your Snowflake administrator to obtain this information.The URI has the
-          form:
+          Before you can complete the link, you will need the Database URI. You
+          may need to contact your Snowflake administrator to obtain this
+          information.The URI has the form:
         </p>
         <pre>
     [ProjectID]/[DatabaseName]/[SchemaName]?warehouse=[WarehouseName]&amp;region=[AWSRegionCode]
@@ -222,65 +235,71 @@
      RCXXXXX/snowflake_sample_data/tpch_sf1?warehouse=test&amp;region=us-east-1
         </pre>
         <p>
-          In addition, you will need a username and password with access to the table you wish 
-          to link. You may need to contact your Snowflake administrator to obtain this information.
-          Once you have the required information, complete the dialog and click <em>Connect</em>.
+          In addition, you will need a username and password with access to the
+          table you wish to link. You may need to contact your Snowflake
+          administrator to obtain this information. Once you have the required
+          information, complete the dialog and click <em>Connect</em>.
         </p>
         <h3 id="data-change">Changing Datasets</h3>
         <p>
-          The datasets that are available to you are listed in the Datasets tab of the Numbrz
-          application. To change a dataset, click on the dataset you wish to work with to 
-          display its <em>metadata</em>. Numbrz linked data works by storing a small amount 
-          of information about the location and structure of your data. Note that it does 
-          NOT store any of the actual data.
+          The datasets that are available to you are listed in the Datasets tab
+          of the Numbrz application. To change a dataset, click on the dataset
+          you wish to work with to display its <em>metadata</em>. Numbrz linked
+          data works by storing a small amount of information about the location
+          and structure of your data. Note that it does NOT store any of the
+          actual data.
         </p>
         <img
           class="ui image bordered rounded large"
           src="assets/images/docs_screenshots/dataset-metadata.png"
         />
         <p>
-          From time to time, this stored information may become out of date, for example, 
-          if you add new columns or change the data type of a field or cell. You can 
-          easily solve most such issues simply by clicking the <em>Refresh</em> button. 
-          In some cases you may need to select new data types from the drop-down menu under 
-          <em>Column Type</em>. This screen also allows you to update column labels if
-          you so desire.
+          From time to time, this stored information may become out of date, for
+          example, if you add new columns or change the data type of a field or
+          cell. You can easily solve most such issues simply by clicking the
+          <em>Refresh</em> button. In some cases you may need to select new data
+          types from the drop-down menu under <em>Column Type</em>. This screen
+          also allows you to update column labels if you so desire.
         </p>
         <h2 id="workflows-anchor">Workflows</h2>
         <h3 id="workflow-overview">Overview</h3>
         <p>
-          Numbrz Workflows turn Functions and Data into powerful applications that run at 
-          the click of a button. Workflows read rows of data from an input <em>Dataset</em> and 
-          pass these rows through a sequence of user-definable steps that perform operations on 
-          the data. These operations include using the data as input to a <em>Function</em>, as 
-          well as a number of other steps such as filtering and aggregation. Finally, the 
-          resulting data can be written to one or more output datasets.
+          Numbrz Workflows turn Functions and Data into powerful applications
+          that run at the click of a button. Workflows read rows of data from an
+          input <em>Dataset</em> and pass these rows through a sequence of
+          user-definable steps that perform operations on the data. These
+          operations include using the data as input to a <em>Function</em>, as
+          well as a number of other steps such as filtering and aggregation.
+          Finally, the resulting data can be written to one or more output
+          datasets.
         </p>
         <p>
-          <em>How do workflows work?</em><br/>
-          When executed, a workflow starts by iterating over all the rows in the input dataset.
-          It augments these rows with certain information about the workflow itself, and then
-          passes these augmented rows of data through its sequence of steps, one-at-a-time, 
-          until all rows have been seen by all steps.
+          <em>How do workflows work?</em><br />
+          When executed, a workflow starts by iterating over all the rows in the
+          input dataset. It augments these rows with certain information about
+          the workflow itself, and then passes these augmented rows of data
+          through its sequence of steps, one-at-a-time, until all rows have been
+          seen by all steps.
         </p>
         <p>
-          Steps that return results, for example the <em>Execute Function</em> step 
-          (discussed below), have their results added to the row. In this way, downstream
-          steps may further operate on the results of prior steps. In addition to augmenting 
-          the data elements in a single row, some steps may collapse data, emitting fewer rows 
-          from the step than it initially received; while others may expand it, emitting more 
-          rows than the step initially received.
+          Steps that return results, for example the
+          <em>Execute Function</em> step (discussed below), have their results
+          added to the row. In this way, downstream steps may further operate on
+          the results of prior steps. In addition to augmenting the data
+          elements in a single row, some steps may collapse data, emitting fewer
+          rows from the step than it initially received; while others may expand
+          it, emitting more rows than the step initially received.
         </p>
         <p>
-          The graphic below shows how data values in individual input rows may change depending
-          upon the actions of the steps that process them. See the sections that follow for 
-          details on workflow steps.
-        </p> 
+          The graphic below shows how data values in individual input rows may
+          change depending upon the actions of the steps that process them. See
+          the sections that follow for details on workflow steps.
+        </p>
         <img
           class="ui image bordered rounded big"
           src="assets/images/docs_screenshots/augmented-rows.png"
         />
-        
+
         <h3 id="workflow-create">Creating Workflows</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -297,63 +316,66 @@
         <h4>Fill</h4>
         <p>
           The <em>Fill</em> step combines rows from the input dataset with rows
-          from a secondary dataset to produce a cross-join of the two datasets. 
-          In other words, for each row of input, the fill step emits rows that 
-          combine the data of the input row with the data of each row of the 
+          from a secondary dataset to produce a cross-join of the two datasets.
+          In other words, for each row of input, the fill step emits rows that
+          combine the data of the input row with the data of each row of the
           fill dataset. If the fill dataset consists of 10 rows, then for every
-          input row, 10 rows are emitted. Fill steps are often used to augment 
+          input row, 10 rows are emitted. Fill steps are often used to augment
           input with a calendar of dates, for time-based processing.
         </p>
         <h4>Execute</h4>
         <p>
           The <em>Execute Function</em> step uses data from the input rows to
           run a Numbrz Function. The step allows the user to map data elements
-          to the functions inputs. When the workflow runs the function is 
+          to the functions inputs. When the workflow runs the function is
           executed and the results (as defined by the functions outputs) are
-          added to the data row emitted from the step. Workflow authors can leverage 
-          the accumulation of results to chain function calls, allowing subsequent 
-          executions to build on the results of prior executions. 
+          added to the data row emitted from the step. Workflow authors can
+          leverage the accumulation of results to chain function calls, allowing
+          subsequent executions to build on the results of prior executions.
         </p>
         <h4>Aggregate</h4>
         <p>
-          The <em>Aggregate</em> step sums values in input rows according to a defined 
-          grouping. The aggregate step is a step that both substantially changes the values 
-          in the data rows it emits, as well as collapsing the number of data rows emitted.
+          The <em>Aggregate</em> step sums values in input rows according to a
+          defined grouping. The aggregate step is a step that both substantially
+          changes the values in the data rows it emits, as well as collapsing
+          the number of data rows emitted.
         </p>
 
         <h4>Filter</h4>
         <p>
-          The <em>Filter</em> step will reduce the number of rows emitted by 
+          The <em>Filter</em> step will reduce the number of rows emitted by
           passing the row through a user-definable filter. Only rows that meet
           the criteria specified by the filter will pass through the step. The
-          filter step does not change the individual values in the row 
-          in any way.
+          filter step does not change the individual values in the row in any
+          way.
         </p>
 
         <h4>Output</h4>
         <p>
           The <em>Output</em> step writes data to a Numbrz dataset. During step
-          configuration, elements of the data rows passing through the step are 
-          mapped to fields in the dataset. Output steps still pass the data 
-          to downstream steps, allowing outputs to be chained in interesting ways.
-          The output step does not change the individual values in the row 
-          in any way.
+          configuration, elements of the data rows passing through the step are
+          mapped to fields in the dataset. Output steps still pass the data to
+          downstream steps, allowing outputs to be chained in interesting ways.
+          The output step does not change the individual values in the row in
+          any way.
         </p>
-        <p>The output step also supports an optional filter. The filter controls
-          what data will be written to the output dataset. All data rows
-          still pass through the step to any following steps.
+        <p>
+          The output step also supports an optional filter. The filter controls
+          what data will be written to the output dataset. All data rows still
+          pass through the step to any following steps.
         </p>
         <h4>AWS Output</h4>
         <p>
-          The <em>AWS Output</em> step writes data to Amazon S3 as CSV. During step
-          configuration, elements of the data rows passing through the step are 
-          mapped to fields in a delimited file. Output steps still pass the data 
-          to downstream steps, allowing outputs to be chained in interesting ways.
-          The output step does not change the individual values in the row 
-          in any way.
+          The <em>AWS Output</em> step writes data to Amazon S3 as CSV. During
+          step configuration, elements of the data rows passing through the step
+          are mapped to fields in a delimited file. Output steps still pass the
+          data to downstream steps, allowing outputs to be chained in
+          interesting ways. The output step does not change the individual
+          values in the row in any way.
         </p>
-        <p>The AWS output step also supports an optional filter. The filter controls
-          what data will be written to the output file. All data rows
+        <p>
+          The AWS output step also supports an optional filter. The filter
+          controls what data will be written to the output file. All data rows
           still pass through the step to any following steps.
         </p>
 
@@ -364,22 +386,24 @@
         <div class="ui accordion">
           <div class="title">
             <i class="dropdown icon"></i>
-            Functions
+            <a href="#functions-header">Functions</a>
           </div>
           <div class="content">
             <div class="ui bulleted list">
-              <div class="item"><a href="">Overview</a></div>
-              <div class="item"><a href="">Canvas</a></div>
+              <div class="item"><a href="#functions-overview">Overview</a></div>
+              <div class="item"><a href="#functions-canvas">Canvas</a></div>
               <div class="item">
-                <div><a href="">Built-in Functions</a></div>
+                <div><a href="#widgets-header">Widgets</a></div>
                 <div class="list">
+                  <div class="item">
+                    <a href="#widgets-overview">Overview</a>
+                  </div>
                   <div class="item"><a href="">Data</a></div>
                   <div class="item"><a href="">Date</a></div>
+                  <div class="item">
+                    <a href="#widgets-arithmetic">Arithmetic</a>
+                  </div>
                   <div class="item"><a href="">Lookup</a></div>
-                  <div class="item"><a href="">Sum</a></div>
-                  <div class="item"><a href="">Subtraction</a></div>
-                  <div class="item"><a href="">Multiplication</a></div>
-                  <div class="item"><a href="">Division</a></div>
                   <div class="item"><a href="">Switch</a></div>
                   <div class="item"><a href="">Input</a></div>
                   <div class="item"><a href="">Output</a></div>
@@ -394,8 +418,12 @@
           <div class="content">
             <div class="ui bulleted list">
               <div class="item"><a href="#data-overview">Overview</a></div>
-              <div class="item"><a href="#data-create">Creating Datasets</a></div>
-              <div class="item"><a href="#data-change">Changing Datasets</a></div>
+              <div class="item">
+                <a href="#data-create">Creating Datasets</a>
+              </div>
+              <div class="item">
+                <a href="#data-change">Changing Datasets</a>
+              </div>
             </div>
           </div>
           <div class="title">
@@ -405,7 +433,9 @@
           <div class="content">
             <div class="ui bulleted list">
               <div class="item"><a href="#workflow-overview">Overview</a></div>
-              <div class="item"><a href="#workflow-create">Creating Workflows</a></div>
+              <div class="item">
+                <a href="#workflow-create">Creating Workflows</a>
+              </div>
               <div class="item">
                 <div><a href="#workflow-steps">Workflow Steps</a></div>
                 <div class="list">
@@ -433,6 +463,11 @@
     </div>
     <script>
       $(".ui.accordion").accordion();
+
+      $("#widgets-video").click(function() {
+        console.log("clicking");
+        $(".ui.modal").modal("show");
+      });
     </script>
   </body>
 </html>
