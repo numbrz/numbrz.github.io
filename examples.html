@@ -33,7 +33,7 @@
     <div id="content-wrapper">
       <div id="content">
         <h2>Headcount Tutorial</h2>
-        <h3>Overview</h3>
+        <h3 id="tutorial-overview">Overview</h3>
         <p>
           In this tutorial we will build a model which will forecast monthly salary 
           expenses and total headcount. Our model will address a somewhat simplified 
@@ -108,17 +108,191 @@
         />
 
         <h3 id="functions-header">Setting Up Functions</h3>
+        <h4 id="functions-overview">Overview</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          The monthly salary function will accept the following inputs:
         </p>
+        <div class="ui list bulleted">
+          <div class="item">Annual salary of an employee</div>
+          <div class="item">Start date for the employee</div>
+          <div class="item">Termination date for the employee</div>
+          <div class="item">Month to calculate</div>
+          
+        </div>
+        <p>It will produce the following outputs:</p>
+          <div class="ui list bulleted">
+            <div class="item">Monthly salary</div>
+            <div class="item">Headcount contribution for the month (0 or 1)
+            </div>
+          </div>
+        <p>
+            To get started, select Functions tab and click the '+' button in the lower right corner. You should see a dialog similar to the following:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/create_function.png"
+        />
+        <p>
+            Give the function a name (Monthly Salary) and click 'Add'. This will create the function and add it to our project. Click the newly created function to open the Modeler. You should see an empty canvas:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/empty_canvas.png"
+        />
 
-        
+        <h4 id="functions-inputs">Inputs and Outputs</h4>
+        <p>
+            First, let's add the inputs to the function. Functions accept input using an Input widget. To add one, double-click on the canvas to bring up the Add Widget dialog. The location you click will determine where the new widget will be placed. You should a dialog similar to the following:
+        </p>
+        <img
+        class="ui image large rounded bordered"
+        src="assets/images/example_screenshots/input_widget.png"
+      />
+      <p>
+          Select 'Input' from the list of widgets on the left, and click 'Add'. Congratulations, you created your first widget! You can double-click on the widget title to change the title. Next, let's add three more inputs. Rows can be added like this:
+      </p>
+      <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/input_widget_2.gif"
+    />
+    <p>
+        Repeat this three times to create four input rows, then add labels and enter sample values:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/input_widget_3.png"
+    />
+    <p>
+        Next, follow the same process to add an Output widget and give it a single row labeled 'Monthly Salary.' Output widgets are used to collect the outputs of a function. These outputs will be used in the Headcount workflow we'll build a little bit later.
+    </p>
+    <h4 id="functions-monthly-calc">Calculating Monthly Salary</h4>
+    <p>
+        To convert the annual salary we're given as input to a monthly salary, we're going to use a Division widget. As the name suggests, division widgets are used to compute quotients. To add one, double-click the canvas, select 'Division' from the list of widgets on the Add Widget dialog and click 'Add.' You can also quickly select and add a widget by double-clicking it.
+    </p>
+    <p>To compute the monthly salary, we simply need to divide the annual salary by 12. Set up the widget as follows:</p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_1.png"
+    />
+    <p>
+        Next, we have to reference the annual salary input in our division widget. To do this, we create a Link. A link is an association between cells which causes changes to the source cell to be propagated to the target. To create a link, drag the source cell onto the target cell:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_2.gif"
+    />
+    <p>
+        We're now calculating monthly salary. To use this as the output for the function, create a link from the result cell in our division widget to the output widget we created earlier:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_3.png"
+    />
+    <p>
+        We now have a working function! It's currently very simple - all it does is compute the monthly salary from an annual salary, but it can be used in any workflow where such a calculation might be useful.
+    </p>
+    <h4 id="functions-current-calc">Calculating the Current Month's Salary</h4>
+<p>To make our function a little more useful, we need to take into consideration the employee's start and termination dates. We will update our logic to only pay the employee for months that they are actually employed. To keep this tutorial simple, we won't pro-rate this calculation for partial months, but this can be accomplished using the same techniques described here.</p>
+<p>To get started, we need to convert the start and termination dates to months. To do this we're going to use a Date widget. The date widget is very useful: it can be used to split a date into a day, month and year, or compose a date from a day, month, and year. We're going to use both of these capabilities.
+
+  </p>
+  <p>Start by adding a date widget, and linking the start date to the 'Date' cell:
+
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_4.png"
+    />
+    <p>Next, calculate the start month by linking the year and month of the start date, and hard-coding the day to '1':</p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_5.gif"
+    />
+    <p>Repeat these steps to calculate the termination month and current month:
+
+      </p>
+      <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_6.png"
+    />
+    <h4 id="functions-interlude">Interlude: Numbrz Functions are Templates
+
+      </h4>
+      <p>
+          When a function is used in a workflow (we'll create a headcount workflow next), the Numbrz engine replaces the inputs of the function with values pulled from the data sources you specify. In this way, a Numbrz function acts like a template, keeping the logic of your calculations completely separate from your data. This means the values you place in the inputs of your function can be anything. This makes it easy to experiment with your function and verify that it's working as expected. You can see this in action by playing with different values in the inputs.
+
+
+      </p>
+      <h4 id="functions-finishing-salary">Finishing the Salary Logic</h4>
+<p>To complete our salary function, we'll need one more type of widget: the Switch widget. Switch widgets are used to produce values based on a set of rules. We're going to use this widget to figure out if the employee was employed for the current month. Start by adding a new Switch widget:
+
+  </p>
+  <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_7.png"
+    />
+
+
+<p>The switch widget is a little more complicate than the other widgets we've seen so far. It is made of up three sections:</p>
+<div class="ui list bulleted">
+  <div class="item">First, the variables section contain the inputs to the widget. You can add as may variables as you want.
+    </div>
+  <div class="item">Next, the rules compare variables against other values, and specify the result should the rule match. Each rule contains one or more conditions and the rule matches only if all of the conditions of that rule match.
+    </div>
+
+  <div class="item">Finally, the _result contains the result after applying the rules.
+    </div>
+
+
+</div>
+<p>So, let's set up our salary logic. We're going to need the start month and term month as variables:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_8.png"
+/>
+
+<p>Next, update the first rule so it checks if the employee started no later than the current month, and terminated no earlier than the current month:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_9.gif"
+/> 
+<p>Next, we need this rule to output the monthly salary when it matches:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_10.png"
+/> 
+<p>This takes care of outputting the previously calculated monthly salary when the employees is employed in the current month. To handle the case where they are not, we take advantage of the Else rule, which is only used when no other rule matches. In this case, we want the salary to be zero. To achieve this, set the result value for the 'Else' rule to '0':
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_11.png"
+/> 
+<p>We're almost done! We just need to use the result of our Salary Logic widget as the output for our function:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_12.png"
+/>  
+
+<h4 id="functions-headcount-calc">Adding the Headcount Calculation
+
+  </h4>
+<p>To complete our function, we need to add the logic to calculate the employee's headcount contribution for the current month. This works very similarly to the salary logic, and just requires a second switch widget:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_13.png"
+/>
+
 
         <h3 id="datasets-header">Setting Up Datasets</h3>
         <p>
@@ -391,9 +565,28 @@
           </div>
           <div class="content">
             <div class="ui bulleted list">
-              <div class="item"><a href="">Overview</a></div>
+              <div class="item"><a href="#tutorial-overview">Overview</a></div>
               <div class="item"><a href="#project-header">Setting Up A Project</a></div>
-              <div class="item"><a href="#functions-header">Setting Up Functions</a></div>
+              <div class="item"><a href="#functions-header">Setting Up Functions</a>
+              <div class="list">
+                <div class="item"><a href="#functions-overview">Overview</a></div>
+                <div class="item"><a href="#functions-inputs">Inputs and Outputs
+                  </a></div>
+                <div class="item"><a href="#functions-monthly-calc">Calculating Monthly Salary
+                  </a></div>
+                <div class="item"><a href="#functions-current-calc">Calculating the Current Month's Salary
+                  </a></div>
+                <div class="item"><a href="#functions-interlude">Interlude: Numbrz Functions are Templates</a></div>
+                <div class="item"><a href="#functions-finishing-salary">Finishing the Salary Logic
+                  </a></div>
+                <div class="item"><a href="#functions-headcount-calc">Adding the Headcount Calculation
+                  </a></div>
+                
+                
+
+              </div>
+              
+              </div>
               <div class="item">
                 <a href="#datasets-header">Setting Up Datasets</a>
                 <div class="list">

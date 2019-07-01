@@ -31,11 +31,12 @@ body {
 }
 
 #site-logo {
-  display: block;
   height: 50px;
   width: 150px;
-  background-image: url("./assets/images/numbrz_logo_transparent_white.png");
-  background-size: 150px 50px;
+  background-image: url("./assets/images/numbrz_logo_white.png");
+  background-repeat: no-repeat;
+  background-size: 150px 40px;
+  margin-top: 10px;
 }
 
 #content-wrapper {
@@ -95,7 +96,7 @@ body {
 }
 
 #sidebar-right {
-  flex: 1;
+  width: 30%;
   background-color: #f2f2f2;
   border-left: 1px solid rgb(219, 219, 220);
 }
@@ -107,7 +108,7 @@ body {
   padding-inline-start: 0;
   position: fixed;
   top: 100px;
-  width: 100%;
+  padding-right: 10px;
 }
 
 #sidebar-right .bulleted {
@@ -116,6 +117,7 @@ body {
 
 #sidebar-right .accordion a {
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 #sidebar-right .accordion a:hover {
