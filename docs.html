@@ -91,8 +91,56 @@
           src="assets/images/docs_screenshots/data-widget.png"
         />
 
-        <h4>Lookup</h4>
-        <p></p>
+        <h4 id="widgets-lookup">Lookup</h4>
+        <p>
+            A Lookup widget searches for a value (lookup value) in a specified column of a Data widget (lookup table) and returns the value based on search criteria.
+        </p>
+        <p>
+            Adding a Lookup widget is a two step process. User must first create a Data widget to serve as a lookup table. Once a Data widget is present on canvas, user can create a Lookup widget by opening the Add Dialog (double click anywhere on canvas) and selecting 'Lookup'. User will then need to select the Data widget (click on item in the list) to be used as the lookup table from the list. 
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/docs_screenshots/lookup_add.png"
+        />
+        <p>
+            We recommend all column headers of your Data widget are properly labeled prior to adding the Lookup widget.  This will help you use the Lookup widget.  You can also add and change headers after adding the Lookup widget.  
+        </p>
+        <p>
+        The first column of the Lookup widget is a Label.  It does not impact the Lookup function.  Change this value as you wish.
+        </p>
+<p>
+        The second column of the Lookup widget is the Lookup value.  This can be a static value or a Link from another Cell.
+        </p>
+<p>
+        The third column of the Lookup widget is a selectable popup value that represents the Data widget column from which to return the corresponding row value.  You can easily change what result column is being returned.  Values returned by the Lookup widget are presented in green cells.  You can add more columns to the Lookup widget to return more results from different columns of the Data widget.
+</p>
+<img
+          class="ui image big rounded bordered"
+          src="assets/images/docs_screenshots/lookup_widget_complete.png"
+        />
+
+        <p>
+            Note, the search column is NOT limited to the first column of a Data Widget.  Use the column header popup to select the Data widget column that will act as the search column.  For example, you could search on the third column and provide results from the fourth column.  
+        </p>
+        <p>
+            In order to provide a correct lookup, it is recommended that your source Data widget is sorted in ascending order.  You can easily reorder your rows by using the slider on the far left side of each row.
+        </p>
+        <p>
+            You can specify the closest match or an exact match for your row selection.  Note, this setting applies to all lookups in that Lookup widget.  If you want some values that are based upon the closest value and some based upon the exact value, you will need to add two Lookup widgets that reference the same Data widget.
+
+        </p>
+      <p>
+          The default search criteria is the closest match without going over the search value.  In order to specify an exact match, select the Lookup widget to make it an active object on the Canvas and open the Left Pane.  Select the ‘Exact Match’ radio button.  This is in the top section of the Left Pane.
+
+      </p>
+      
+      <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/lookup_leftpane.png"
+        />
+        
+        
+
 
         <h4>Date</h4>
         <p>
@@ -612,10 +660,10 @@
                   <div class="item">
                     <a href="#widgets-arithmetic">Arithmetic</a>
                   </div>
-                  <div class="item"><a href="">Lookup</a></div>
-                  <div class="item"><a href="">Switch</a></div>
-                  <div class="item"><a href="">Input</a></div>
-                  <div class="item"><a href="">Output</a></div>
+                  <div class="item"><a href="#widgets-lookup">Lookup</a></div>
+                  <div class="item"><a href="#widgets-switch">Switch</a></div>
+                  <div class="item"><a href="#widgets-input">Input</a></div>
+                  <div class="item"><a href="#widgets-output">Output</a></div>
                 </div>
               </div>
             </div>
@@ -679,8 +727,10 @@
       $(".ui.accordion").accordion();
 
       $("#widgets-video").click(function() {
-        console.log("clicking");
         $(".ui.modal").modal("show");
+      });
+      $("#lookup-video").click(function() {
+        $(".lookup-video").modal("show");
       });
     </script>
   </body>
