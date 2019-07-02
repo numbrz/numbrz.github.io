@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Numbrz - Tutorial</title>
+    <title>Numbrz - Documentation</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -24,611 +24,719 @@
       <div id="header">
         <div id="site-logo"></div>
         <div id="nav">
-          <a href="index.html" class="active">Tutorial</a>
-          <a href="docs.html">Docs</a>
+          <a href="index.html" class="active">Features</a>
+          <a href="tutorial.html">Tutorial</a>
         </div>
       </div>
     </div>
 
     <div id="content-wrapper">
       <div id="content">
-        <h2>Headcount Tutorial</h2>
-        <h3 id="tutorial-overview">Overview</h3>
+        <h2 id="functions-header">Functions</h2>
+        <h3 id="functions-overview">Overview</h3>
         <p>
-          In this tutorial we will build a model which will forecast monthly salary 
-          expenses and total headcount. Our model will address a somewhat simplified 
-          version of a real-world problem that is often solved using a spreadsheet. We 
-          will process an employee table containing start and termination dates and current 
-          salaries into a series of monthly totals for planning or forecasting. Consider 
-          the spreadsheet below, which endeavors to address this case.
+            Calculations are built graphically in Numbrz using the Modeler. A function is a collection of widgets which provide a variety of capabilities like accepting input, producing output, simple arithmetic, and conditional logic.
+        </p>
+        <h3 id="functions-canvas">Canvas</h3>
+        <p>
+          Numbrz modeler canvas allows users to quickly create and connect
+          pieces of logic that will eventually drive the execution of the
+          workflow. Every Numbrz function is represented by a single canvas
+          which may contain any number of widgets.
         </p>
         <img
           class="ui image big rounded bordered"
-          src="assets/images/example_screenshots/sheet-example.png"
-        />
-        <p>
-          Using a spreadsheet to perform these calculations works, but has several weaknesses 
-          that become evident as the amount of data and number of calculations grows.
-        </p>
-        <h4>New data requires structural changes</h4>
-        <p>
-          Spreadsheets may often combine data and calculations tightly. In our example, 
-          if you want to add more employees or additional forecast dates, you have to insert 
-          rows and columns and copy formulas and formats.
-        </p>
-        <h4>Formulas are difficult to follow</h4>
-        <p>
-          Even in our simplified example, it is difficult to explain and document the various 
-          formulas used. As the complexity of a spreadsheet grows, this worsens to the point 
-          that only a handful of persons in the organization may really understand what the 
-          formulas do.
-        </p>
-        <img
-          class="ui image big rounded bordered"
-          src="assets/images/example_screenshots/sheet-formulas.png"
-        />
-        <h4>Collaboration is difficult</h4>
-        <p>
-          The tight coupling of data and calculation, as well as the concentration of understanding 
-          in just a few persons make collaboration and division of tasks difficult.
-        </p>
-        <h4>Processes cannot be automated</h4>
-        <p>
-          Spreadsheets are not applications, performing any updates always requires manual work.
-        </p>
-        <h4>The Numbrz Solution</h4>
-        <p>
-          In the sections that follow, we will build a solution consisting of the following elements:
-          <ol>
-            <li>
-              Simple data tables representing our employee list and the calendar of dates we wish to 
-              plan or forecast. This data will not be commingled with calculations and will be easy 
-              to change regardless of how complex the overal system becomes. Indeed, persons responsible 
-              for maintaining such data can work separately from yet in collaboration with maintainers 
-              of other system components.
-            </li>
-            <li>
-              An easy-to-understand function that calculates salary expense and headcount. In Numbrz, 
-              functions are clear and self-documenting, unlike formulae in spreadsheets.
-            </li>
-            <li>
-              An automated workflow that uses this function to process our employee and calendar data 
-              into a destination spreadsheet that can be used for visualization and further analysis. 
-              Workflows turn data and functions into full-blown applications.
-            </li>
-          </ol>
-        </p>
-        <h3 id="project-header">Setting Up A Project</h3>
-        <p>
-          To get started, let's create a project that will hold all of the artifacts required by our headcount workflow. Simply navigate to Projects tab if you are not already there and click '+' icon located on the bottom right corner. Title your project appropriately and click 'Add'. Now you have a place to store any number of functions, data sources, and workflows related to your headcount model. You should see a screen similar to the one below:
-        </p>
-        <img
-          class="ui image big rounded bordered"
-          src="assets/images/example_screenshots/empty-project.png"
+          src="assets/images/docs_screenshots/canvas.png"
         />
 
-        <h3 id="functions-header">Setting Up Functions</h3>
-        <h4 id="functions-overview">Overview</h4>
+        <h3 id="widgets-header">Widgets</h3>
+        <h4 id="widgets-overview">Overview</h4>
         <p>
-          The monthly salary function will accept the following inputs:
+          Numbrz provides users with a number of pre-built widgets that can be
+          combined, just like lego pieces, to create complex calculations and
+          relationships between data. All widgets support a set of basic
+          interactions: creation, deletion, insertion and deletion of rows or
+          columns, rearrangement of rows or columns, and editing of any cell.
+          The following video shows these interactions in action:
         </p>
-        <div class="ui list bulleted">
-          <div class="item">Annual salary of an employee</div>
-          <div class="item">Start date for the employee</div>
-          <div class="item">Termination date for the employee</div>
-          <div class="item">Month to calculate</div>
-          
+        <div id="widgets-video">
+          <i class="icon circle outline play huge"></i>
         </div>
-        <p>It will produce the following outputs:</p>
-          <div class="ui list bulleted">
-            <div class="item">Monthly salary</div>
-            <div class="item">Headcount contribution for the month (0 or 1)
-            </div>
+        <div class="ui modal">
+          <i class="close icon"></i>
+          <div class="header">
+            Basic Widget Interactions
           </div>
+          <div class="image content">
+            <video width="800" height="580" controls>
+              <source
+                src="assets/images/docs_screenshots/widget-interactions.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <h4 id="widgets-data">Data</h4>
         <p>
-            To get started, select Functions tab and click the '+' button in the lower right corner. You should see a dialog similar to the following:
+          This is the most basic widget inside Numbrz and it is most commonly
+          used to store static variables that get passed through the function
+          during runtime of a workflow. Data widget is also an integral part of
+          the lookup widget which will cover in the next section.
         </p>
         <img
-          class="ui image large rounded bordered"
-          src="assets/images/example_screenshots/create_function.png"
-        />
-        <p>
-            Give the function a name (Monthly Salary) and click 'Add'. This will create the function and add it to our project. Click the newly created function to open the Modeler. You should see an empty canvas:
-        </p>
-        <img
-          class="ui image large rounded bordered"
-          src="assets/images/example_screenshots/empty_canvas.png"
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/data-widget.png"
         />
 
-        <h4 id="functions-inputs">Inputs and Outputs</h4>
+        <h4 id="widgets-lookup">Lookup</h4>
         <p>
-            First, let's add the inputs to the function. Functions accept input using an Input widget. To add one, double-click on the canvas to bring up the Add Widget dialog. The location you click will determine where the new widget will be placed. You should a dialog similar to the following:
+            A Lookup widget searches for a value (lookup value) in a specified column of a Data widget (lookup table) and returns the value based on search criteria.
+        </p>
+        <p>
+            Adding a Lookup widget is a two step process. User must first create a Data widget to serve as a lookup table. Once a Data widget is present on canvas, user can create a Lookup widget by opening the Add Dialog (double click anywhere on canvas) and selecting 'Lookup'. User will then need to select the Data widget (click on item in the list) to be used as the lookup table from the list. 
         </p>
         <img
-        class="ui image large rounded bordered"
-        src="assets/images/example_screenshots/input_widget.png"
-      />
+          class="ui image large rounded bordered"
+          src="assets/images/docs_screenshots/lookup_add.png"
+        />
+        <p>
+            We recommend all column headers of your Data widget are properly labeled prior to adding the Lookup widget.  This will help you use the Lookup widget.  You can also add and change headers after adding the Lookup widget.  
+        </p>
+        <p>
+        The first column of the Lookup widget is a Label.  It does not impact the Lookup function.  Change this value as you wish.
+        </p>
+<p>
+        The second column of the Lookup widget is the Lookup value.  This can be a static value or a Link from another Cell.
+        </p>
+<p>
+        The third column of the Lookup widget is a selectable popup value that represents the Data widget column from which to return the corresponding row value.  You can easily change what result column is being returned.  Values returned by the Lookup widget are presented in green cells.  You can add more columns to the Lookup widget to return more results from different columns of the Data widget.
+</p>
+<img
+          class="ui image big rounded bordered"
+          src="assets/images/docs_screenshots/lookup_widget_complete.png"
+        />
+
+        <p>
+            Note, the search column is NOT limited to the first column of a Data Widget.  Use the column header popup to select the Data widget column that will act as the search column.  For example, you could search on the third column and provide results from the fourth column.  
+        </p>
+        <p>
+            In order to provide a correct lookup, it is recommended that your source Data widget is sorted in ascending order.  You can easily reorder your rows by using the slider on the far left side of each row.
+        </p>
+        <p>
+            You can specify the closest match or an exact match for your row selection.  Note, this setting applies to all lookups in that Lookup widget.  If you want some values that are based upon the closest value and some based upon the exact value, you will need to add two Lookup widgets that reference the same Data widget.
+
+        </p>
       <p>
-          Select 'Input' from the list of widgets on the left, and click 'Add'. Congratulations, you created your first widget! You can double-click on the widget title to change the title. Next, let's add three more inputs. Rows can be added like this:
+          The default search criteria is the closest match without going over the search value.  In order to specify an exact match, select the Lookup widget to make it an active object on the Canvas and open the Left Pane.  Select the ‘Exact Match’ radio button.  This is in the top section of the Left Pane.
+
       </p>
+      
       <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/input_widget_2.gif"
-    />
-    <p>
-        Repeat this three times to create four input rows, then add labels and enter sample values:
-    </p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/input_widget_3.png"
-    />
-    <p>
-        Next, follow the same process to add an Output widget and give it a single row labeled 'Monthly Salary.' Output widgets are used to collect the outputs of a function. These outputs will be used in the Headcount workflow we'll build a little bit later.
-    </p>
-    <h4 id="functions-monthly-calc">Calculating Monthly Salary</h4>
-    <p>
-        To convert the annual salary we're given as input to a monthly salary, we're going to use a Division widget. As the name suggests, division widgets are used to compute quotients. To add one, double-click the canvas, select 'Division' from the list of widgets on the Add Widget dialog and click 'Add.' You can also quickly select and add a widget by double-clicking it.
-    </p>
-    <p>To compute the monthly salary, we simply need to divide the annual salary by 12. Set up the widget as follows:</p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_1.png"
-    />
-    <p>
-        Next, we have to reference the annual salary input in our division widget. To do this, we create a Link. A link is an association between cells which causes changes to the source cell to be propagated to the target. To create a link, drag the source cell onto the target cell:
-    </p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_2.gif"
-    />
-    <p>
-        We're now calculating monthly salary. To use this as the output for the function, create a link from the result cell in our division widget to the output widget we created earlier:
-    </p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_3.png"
-    />
-    <p>
-        We now have a working function! It's currently very simple - all it does is compute the monthly salary from an annual salary, but it can be used in any workflow where such a calculation might be useful.
-    </p>
-    <h4 id="functions-current-calc">Calculating the Current Month's Salary</h4>
-<p>To make our function a little more useful, we need to take into consideration the employee's start and termination dates. We will update our logic to only pay the employee for months that they are actually employed. To keep this tutorial simple, we won't pro-rate this calculation for partial months, but this can be accomplished using the same techniques described here.</p>
-<p>To get started, we need to convert the start and termination dates to months. To do this we're going to use a Date widget. The date widget is very useful: it can be used to split a date into a day, month and year, or compose a date from a day, month, and year. We're going to use both of these capabilities.
-
-  </p>
-  <p>Start by adding a date widget, and linking the start date to the 'Date' cell:
-
-    </p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_4.png"
-    />
-    <p>Next, calculate the start month by linking the year and month of the start date, and hard-coding the day to '1':</p>
-    <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_5.gif"
-    />
-    <p>Repeat these steps to calculate the termination month and current month:
-
-      </p>
-      <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_6.png"
-    />
-    <h4 id="functions-interlude">Interlude: Numbrz Functions are Templates
-
-      </h4>
-      <p>
-          When a function is used in a workflow (we'll create a headcount workflow next), the Numbrz engine replaces the inputs of the function with values pulled from the data sources you specify. In this way, a Numbrz function acts like a template, keeping the logic of your calculations completely separate from your data. This means the values you place in the inputs of your function can be anything. This makes it easy to experiment with your function and verify that it's working as expected. You can see this in action by playing with different values in the inputs.
-
-
-      </p>
-      <h4 id="functions-finishing-salary">Finishing the Salary Logic</h4>
-<p>To complete our salary function, we'll need one more type of widget: the Switch widget. Switch widgets are used to produce values based on a set of rules. We're going to use this widget to figure out if the employee was employed for the current month. Start by adding a new Switch widget:
-
-  </p>
-  <img
-      class="ui image big rounded bordered"
-      src="assets/images/example_screenshots/calc_7.png"
-    />
-
-
-<p>The switch widget is a little more complicate than the other widgets we've seen so far. It is made of up three sections:</p>
-<div class="ui list bulleted">
-  <div class="item">First, the variables section contain the inputs to the widget. You can add as may variables as you want.
-    </div>
-  <div class="item">Next, the rules compare variables against other values, and specify the result should the rule match. Each rule contains one or more conditions and the rule matches only if all of the conditions of that rule match.
-    </div>
-
-  <div class="item">Finally, the _result contains the result after applying the rules.
-    </div>
-
-
-</div>
-<p>So, let's set up our salary logic. We're going to need the start month and term month as variables:
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_8.png"
-/>
-
-<p>Next, update the first rule so it checks if the employee started no later than the current month, and terminated no earlier than the current month:
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_9.gif"
-/> 
-<p>Next, we need this rule to output the monthly salary when it matches:
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_10.png"
-/> 
-<p>This takes care of outputting the previously calculated monthly salary when the employees is employed in the current month. To handle the case where they are not, we take advantage of the Else rule, which is only used when no other rule matches. In this case, we want the salary to be zero. To achieve this, set the result value for the 'Else' rule to '0':
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_11.png"
-/> 
-<p>We're almost done! We just need to use the result of our Salary Logic widget as the output for our function:
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_12.png"
-/>  
-
-<h4 id="functions-headcount-calc">Adding the Headcount Calculation
-
-  </h4>
-<p>To complete our function, we need to add the logic to calculate the employee's headcount contribution for the current month. This works very similarly to the salary logic, and just requires a second switch widget:
-
-  </p>
-  <img
-  class="ui image big rounded bordered"
-  src="assets/images/example_screenshots/calc_13.png"
-/>
-
-
-        <h3 id="datasets-header">Setting Up Datasets</h3>
-        <p>
-          In order for our headcount workflow to work with real data we have to
-          configure three datasets: Input, Calendar, and Output. Create a GSheet
-          with three tabs titled: Employee Payroll, Calendar, and Monthly
-          Payroll. The Employee Payroll tab should match the following structure
-          and content:
-        </p>
-        <img
-          class="ui image large rounded bordered"
-          src="assets/images/example_screenshots/EmployeePayroll-GSheet.png"
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/lookup_leftpane.png"
         />
-        <p>
-          The Calendar tab should match the following structure and content:
-        </p>
-        <img
-          class="ui image large rounded bordered"
-          src="assets/images/example_screenshots/Calendar-GSheet.png"
-        />
-        <p>
-          The Monthly Payroll tab should match the following structure and
-          content:
-        </p>
+
+        <p>Below is a demonstration of how the Lookup widget is created and configured:</p>
         <img
           class="ui image big rounded bordered"
-          src="assets/images/example_screenshots/Output-GSheet.png"
+          src="assets/images/docs_screenshots/Lookup_video.gif"
+        />
+        
+        
+
+
+        <h4>Date</h4>
+        <p>
+          Date widgets, as the name suggests, are used to store and format
+          dates. Simply fill out the date column in the date widget and Numbrz
+          will format the rest.
+        </p>
+        <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/date-widget.png"
         />
 
-        <h4 id="connect-gsheets">Connecting GSheets to Numbrz</h4>
+        <h4 id="widgets-arithmetic">Arithmetic</h4>
         <p>
-          Before we can use the GSheets we created in our workflow, we need to
-          connect them to Numbrz. Connecting external data sources is easy,
-          simply click the '+' icon located on the bottom right corner of the Data
-          tab screen and fill out the necessary information. In our case, we
-          want to connect a GSheet, which is the default external data source.
+          Arithmetic widgets can be used to perform basic math but in conjuction
+          with Numbrz canvas they become powerful tools for representing complex
+          calculations. Currently, Numbrz has 4 built-in arithmetic widgets:
+          Sum, Product, Subtraction, and Division. The bottom row of the
+          arithmetic widget represents the calculated row. Depending on the
+          widget, each cell of the calculated row is either the sum, product,
+          difference, or the quotient of all the cells in that column. To see
+          the calculated value across the row users can add a result column. To
+          add a result column, locate the top right corner of the widget and
+          click 'Total' as displayed in the image below:
+        </p>
+        <img
+          class="ui image medium rounded bordered"
+          src="assets/images/docs_screenshots/arithmetic-total-col.png"
+        />
+
+        <h4>Switch</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h4>Input</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h4>Output</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h2 id="data-anchor">Data</h2>
+        <h3 id="data-overview">Overview</h3>
+        <p>
+          <em>Datasets</em> are the unit of tabular data used by other
+          components of the Numbrz ecosystem. Numbrz can read and write data
+          from several sources. As the system continues to be developed, more
+          sources will be added. Numbrz processes data by reading rows from a
+          Dataset or by writing rows to a Dataset. Data is not imported into
+          Numbrz, but rather is read or written via links to the data where it
+          already resides. The datasets that are available to you are listed in
+          the Datasets tab of the Numbrz application.
         </p>
         <p>
-          For each GSheet tab in our document: copy the url from the browser and
-          paste it into the form, title each dataset accordingly, and click
-          'Connect'.
+          <em>Working with Data in Numbrz</em><br/>
+          Your Datasets are organized under the <em>Data</em> tab of the Numbrz application
+          or in a <a href="#projects-anchor">Project</a> that you have established. You can delete a 
+          dataset you no longer want by clicking the <em>Delete</em> icon on the workflow list item. 
+          To change an existing dataset, click its title.
         </p>
         <img
           class="ui image bordered rounded big"
-          src="assets/images/example_screenshots/gsheet-url.png"
+          src="assets/images/docs_screenshots/data-list.png"
         />
+        <h3 id="data-create">Creating Datasets</h3>
+        <h4>Google Sheets</h4>
         <p>
-          We will also need to share our GSheet with Numbrz. To do so, copy the
-          Numbrz agent information from the dialog.
+          Google Sheets is a popular online spreadsheet application. Numbrz
+          natively supports reading from and writing to Sheets with a couple of
+          important caveats:
+        </p>
+        <ul>
+          <li>
+            Your sheet data must be in tabular form with a single row of header
+            labels.
+          </li>
+          <li>
+            The table must start at cell A1 and have less than 52 columns.
+          </li>
+          <li>
+            The table must have at least one row (i.e. the row starting at A2)
+            of representative data (this is how Numbrz determines the data type
+            of the cells).
+          </li>
+        </ul>
+        <p>
+          To add a Google Sheets dataset, click the '+' in the lower right
+          corner of the Data tab. You will see the Connect Data dialog, Google
+          Sheets is the default selection.
         </p>
         <img
           class="ui image bordered rounded large"
-          src="assets/images/example_screenshots/numbrz-share.png"
+          src="assets/images/docs_screenshots/connect-sheets.png"
         />
         <p>
-          In Gsheets, click 'Share' in the top right corner and paste the copied
-          address into the form.
+          Before you can complete the link, you must grant access to the sheet
+          to the Numbrz agent account. This is not done in the Numbrz
+          application, but rather by using the <em>Share</em> button on the
+          spreadsheet itself. Simply paste the email address shown in the
+          Connect dialog into the <em>People</em> field and click <em>Done</em>.
+          If prompted, elect to 'Skip sending invitations' and click
+          <em>OK</em>.
         </p>
-        <div
-          class="ui images bordered rounded medium
-        "
-        >
-          <img
-            class="ui image "
-            src="assets/images/example_screenshots/gsheet-share.png"
-          />
-          <img
-            class="ui image "
-            src="assets/images/example_screenshots/gsheet-share-2.png"
-          />
-        </div>
         <p>
-          The final list of datasets in Numbrz should look similar to the one
-          below:
+          While in Sheets, copy the full URL of the sheet from your browsers URL
+          bar, then go to Numbrz and paste it into the Numbrz Connect dialog.
+          Give your dataset a meaningful name and click <em>Connect</em>.
+        </p>
+        <h4>Snowflake</h4>
+        <p>
+          Snowflake is a cloud-based data warehouse gaining popularity in many
+          organizations. Numbrz natively supports reading from and writing to
+          Snowflake database tables.
+        </p>
+        <p>
+          To add a Snowflake dataset, click the '+' in the lower right corner of
+          the Data tab. You will see the Connect Data dialog, now click the
+          Snowflake icon.
         </p>
         <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/datasets-final.png"
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/connect-snowflake.png"
         />
+        <p>
+          Before you can complete the link, you will need the Database URI. You
+          may need to contact your Snowflake administrator to obtain this
+          information.The URI has the form:
+        </p>
+        <pre>
+    [ProjectID]/[DatabaseName]/[SchemaName]?warehouse=[WarehouseName]&amp;region=[AWSRegionCode]
+         - e.g. -
+     RCXXXXX/snowflake_sample_data/tpch_sf1?warehouse=test&amp;region=us-east-1
+        </pre>
+        <p>
+          In addition, you will need a username and password with access to the
+          table you wish to link. You may need to contact your Snowflake
+          administrator to obtain this information. Once you have the required
+          information, complete the dialog and click <em>Connect</em>.
+        </p>
+        <h3 id="data-change">Changing Datasets</h3>
+        <p>
+          The datasets that are available to you are listed in the Datasets tab
+          of the Numbrz application. To change a dataset, click on the dataset
+          you wish to work with to display its <em>metadata</em>. Numbrz linked
+          data works by storing a small amount of information about the location
+          and structure of your data. Note that it does NOT store any of the
+          actual data.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/dataset-metadata.png"
+        />
+        <p>
+          From time to time, this stored information may become out of date, for
+          example, if you add new columns or change the data type of a field or
+          cell. You can easily solve most such issues simply by clicking the
+          <em>Refresh</em> button. In some cases you may need to select new data
+          types from the drop-down menu under <em>Column Type</em>. This screen
+          also allows you to update column labels if you so desire.
+        </p>
+        <h2 id="workflows-anchor">Workflows</h2>
+        <h3 id="workflow-overview">Overview</h3>
+        <p>
+          Numbrz Workflows turn Functions and Data into powerful applications
+          that run at the click of a button. Workflows read rows of data from an
+          input <em>Dataset</em> and pass these rows through a sequence of
+          user-definable steps that perform operations on the data. These
+          operations include using the data as input to a <em>Function</em>, as
+          well as a number of other steps such as filtering and aggregation.
+          Finally, the resulting data can be written to one or more output
+          datasets.
+        </p>
+        <p>
+          <em>How do workflows work?</em><br/>
+          When executed, a workflow starts by iterating over all the rows in the input dataset.
+          It augments these rows with certain information about the workflow itself, and then
+          passes these augmented rows of data through its sequence of steps, one-at-a-time, 
+          until all rows have been seen by all steps. Conceptually, this looks a bit like this:
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/row-processing.png"
+        />
+        <p>
+          In a real-world, non-trivial workflow, processing is somewhat less straightforward. Steps 
+          may change both the structure and number of rows as they pass through. Steps that 
+          return results, the <em>Execute Function</em> step (discussed below) for example, 
+          have their results added to the row. In this way, downstream steps may further operate 
+          on the results of prior steps. In addition to augmenting the data elements in a single 
+          row, some steps may collapse data, emitting fewer rows from the step than it initially 
+          received; while others may expand it, emitting more rows than the step initially received.
+        </p>
+        <p>
+          The graphic below shows how data values in individual input rows may
+          change depending upon the actions of the steps that process them. See
+          the sections that follow for details on workflow steps.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/augmented-rows.png"
+        />
+        
+        <p>
+          <em>Working with Numbrz workflows</em><br/>
+          Your workflows are organized under the <em>Workflows</em> tab of the Numbrz application
+          or in a <a href="#projects-anchor">Project</a> that you have established. You can delete a 
+          workflow you no longer want by clicking the <em>Delete</em> icon on the workflow list item. 
+          To edit an existing workflow, click its title.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/workflow-list.png"
+        />
+        
+        <h3 id="workflow-create">Creating Workflows</h3>
+        <p>
+          Before you create a workflow, you should feel comfortable with the concepts described
+          in the <a href="#functions-anchor">Functions</a> and <a href="#data-anchor">Datasets</a> 
+          sections above. You should also have linked the appropriate datasets and produced 
+          at least one function required by your use-case. Note, however, that functions are not 
+          a requirement to create workflows, but without them, workflows do little other than move 
+          data around.
+        </p>
+        <p>
+          To create a workflow, go the the <em>workflows</em> tab of the Numbrz application and
+          click the '+' in the lower right corner. You will be prompted to give your workflow
+          a name and to select its <em>Input Dataset</em>. Click <em>Create</em> to display the
+          workflow builder.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/wf-builder-intro.png"
+        />
+        <p>
+          From this point on, building a workflow is simply a matter of configuring its steps. To 
+          add steps to a workflow, select the desired step type from the palette and drag it into
+          the position desired. Steps execute in sequence, and the order they run is the order
+          you see them in the workflow builder. 
+        </p>
+        <p>
+          Steps displayed in the workflow share some common controls shown in the image below. 
+          You may edit the steps title. It is recommended that all your steps have a descriptive 
+          title. You can also collapse the steps configuration, making more room on the screen.
+          Finally, if there are errors in a steps configuration, they will be displayed as
+          a warning. Workflows with unresolved configuration warnings will not run.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/step-common.png"
+        />
+        <p>
+          In the sections that follow, each of the available workflow steps are documented in detail.
+        </p>
 
-        <h3 id="workflow-header">Setting Up A Workflow</h3>
-        <h4 id="workflow-overview">Overview</h4>
-        <p>
-          The purpose of this workflow is to combine the execution of the
-          previously constructed Headcount function and some basic aggregation
-          to produce summary output that can be used for planning and
-          forecasting. The workflow will:
-        </p>
-        <div class="ui ordered list">
-          <div class="item">
-            Iterate over the Employee Payroll data and apply our Calendar, which
-            is the series of dates we want to forecast or plan.
-          </div>
-          <div class="item">
-            For each combination of employee record and calendar month, execute
-            our function.
-          </div>
-          <div class="item">Total the function output by month.</div>
-          <div class="item">
-            Write the totals to the Monthly Payroll dataset previously defined.
-          </div>
-        </div>
-        <p>
-          Begin a new workflow by selecting the Workflows tab and clicking the
-          '+' in the lower right corner. You should see a dialog similar to the
-          following:
-        </p>
-        <img
-          class="ui image large bordered rounded"
-          src="assets/images/example_screenshots/add-workflow.png"
-        />
-        <p>
-          Give your workflow meaningful name like Tutorial - Headcount and
-          optionally a Scenario name, which is just an extra user-definable
-          category you may apply to your workflows. Finally, in the Source Data
-          drop down, select the Employee Payroll dataset previously configured
-          and click Create. You will now see the Workflow Builder.
-        </p>
-        <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/workflow-builder.png"
-        />
-        <p>
-          Note the warning letting you know that no steps have been configured.
-          We will now add steps to make this workflow functional.
-        </p>
-        <h4 id="workflow-fill-step">Fill Data Step</h4>
-        <p>
-          The first step to add will be a Fill step. Fill produces a union of
-          input data and some other dataset. It will produce up to 300 fill
-          records for each input record. A common use of Fill is to join data
-          with a calendar of dates, which is what we will do.
-        </p>
-        <p>
-          Drag the Fill step from the palette to the right and drop it below the
-          Workflow Settings. Note that you can edit the default title 'Fill Data
-          Step' to make it more meaningful try changing the title to Apply
-          Calendar. Now select the Calendar dataset you previously created from
-          the drop down and, in the fill fields section, select the Month field.
-          Your workflow should now look like this.
-        </p>
-        <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/fill-step.png"
-        />
-        <p>
-          Note the icon to the right of the step title. This is a
-          expand/collapse button. It can be helpful to collapse the
-          configurations as you complete each step, making more room on screen
-          to view the workflow without scrolling.
-        </p>
-        <h4 id="workflow-exec-step">Execute Function Step</h4>
-        <p>
-          Now we have employee payroll data and our period month ends flowing
-          through the workflow. We will use our Payroll function to actually
-          calculate the employees total salary per period.
-        </p>
-        <p>
-          To execute a function, drag an Execute step from the palette and drop
-          it below the Fill step. Give the step a name like Calculate Monthly
-          Payroll and , from the drop-down, select the function you built
-          previously. Under inputs, map workflow data elements to the
-          appropriate function input. Note that the available data fields have
-          been categorized by source.
-        </p>
-        <p>
-          Workflow Data to Function Input:
-        </p>
-        <div class="ui bulleted list">
-          <div class="item">
-            Employee Payroll -> AnnualSalary to Annual Salary
-          </div>
-          <div class="item">Employee Payroll -> StartDate to Start Date</div>
-          <div class="item">Employee Payroll -> EndDate to Term Date</div>
-          <div class="item">Calendar -> Month to Current Month</div>
-        </div>
-        <p>Your workflow will now look like this:</p>
-        <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/exec-step.png"
-        />
+        <h3 id="workflow-steps">Workflow Steps</h3>
 
-        <h4 id="workflow-aggr-step">Aggregate Step</h4>
+        <h4 id="fill-step">Fill</h4>
         <p>
-          Our goal is to produce a forecast by month of payroll costs from our
-          employee data and calendar. To do this, we need to aggregate the
-          payroll data by month. Drag an Aggregate step from the palette, and
-          drop it below the Execute step. Give it a title like Sum Salaries by
-          Period.
+          The <em>Fill</em> step combines rows from the input dataset with rows
+          from a secondary dataset to produce a cross-join of the two datasets.
+          In other words, for each row of input, the fill step emits rows that
+          combine the data of the input row with the data of each row of the
+          fill dataset. If the fill dataset consists of 10 rows, then for every
+          input row, 10 rows are emitted. Fill steps are often used to augment
+          input with a calendar of dates, for time-based processing.
         </p>
-        <p>
-          Under Aggregate, select Sum for Calculation and Monthly
-          Payroll->MonthlySalary for Field. Click '+' to add this calculation.
-          Add another calculation, Sum on Monthly Payroll->Monthly Headcount,
-          click '+' to add this calculation. Under Group By, select Tutorial
-          Calendar->Month Click '+' to add this group.
-        </p>
-        <p>Your workflow will now look like this:</p>
         <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/aggr-step.png"
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/fill-step.png"
         />
+        <p>
+          To configure a fill step, drag the fill icon from the palette and place
+          it in your workflow. Select the fill dataset from the <em>Select Dataset</em>
+          drop-down menu. In the resulting field list, check the fields you want to
+          include in the row this step will emit.
+        </p>
+        <h4 id="exec-step">Execute</h4>
+        <p>
+          The <em>Execute Function</em> step uses data from the input rows to
+          run a Numbrz Function. The step allows the user to map data elements
+          to the functions inputs. When the workflow runs the function is
+          executed and the results (as defined by the functions outputs) are
+          added to the data row emitted from the step. Workflow authors can
+          leverage the accumulation of results to chain function calls, allowing
+          subsequent executions to build on the results of prior executions.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/exec-step.png"
+        />
+        <p>
+          To configure the execute step, drag the execute icon from the palette and place
+          it in your workflow. Use the <em>Select Function</em> drop-down menu to choose
+          the desired function, then map data elements to the functions inputs. All the 
+          function outputs will automatically be available after execution.
+        </p>
+        <h4 id="aggr-step">Aggregate</h4>
+        <p>
+          The <em>Aggregate</em> step sums values in input rows according to a
+          defined grouping. The aggregate step is a step that both substantially
+          changes the values in the data rows it emits, as well as collapsing
+          the number of data rows emitted.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aggr-step.png"
+        />
+        <p>
+          To configure the aggregate step, drag the aggregate icon from the palette and place
+          it in your workflow. Add calculated fields using the <em>Calculation</em> and
+          <em>Field</em> drop-down menus. Add the calculation by clicking '+'. You may repeat this 
+          process for additional calculated fields. Finally, add at least one grouping
+          using the <em>Group by</em> drop-down menu, click '+' to add the grouping.
+        </p>
+        <h4 id="filter-step">Filter</h4>
+        <p>
+          The <em>Filter</em> step will potentially reduce the number of rows emitted 
+          by passing the row through a user-definable filter. Only rows that meet
+          the criteria specified by the filter will pass through the step. The
+          filter step does not change the individual values in the row in any way.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/filter-step.png"
+        />
+        <p>
+          To configure the filter step, drag the filter icon from the palette and place
+          it in your workflow. The criteria you add to filters can compare data values to a 
+          user-entered value, or to the values of other data in the row. 
+          Add criteria to the filter by clicking <em>Add Filter</em> and:
+        </p>
+        <ol>
+          <li>selecting a data element using the <em>Field</em> drop-down menu.</li>
+          <li>selecting an comparison using the <em>Operation</em> drop-down menu.</li>
+          <li>entering a value or selecting a data element to compare with.</li>
+          <li>Clicking the '+' to add your criteria.
+        </ol>
+        <p>
+          You may repeat the process above for as many fields as you wish. When you
+          create criteria this way, all of the comparisons must be true for the
+          row to pass the filter. In the example below the Level must be Bronze AND
+          the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded medium"
+          src="assets/images/docs_screenshots/and-filter.png"
+        />
+        <p>
+          You can also create multi-condition filters where any of the criteria
+          may be true for the row to pass. To do this, add your first criteria
+          as described above, then click <em>Add OR Filter</em>. Add your criteria using the 
+          drop-down menus and clicking '+' also as described above. In the example
+          below, the Level must be Bronze OR the Age must be over 21.
+        </p>
+        <img
+          class="ui image bordered rounded medium"
+          src="assets/images/docs_screenshots/or-filter.png"
+        />
+        <h4 id="output-step">Output</h4>
+        <p>
+          The <em>Output</em> step writes data to a Numbrz dataset. During step
+          configuration, elements of the data rows passing through the step are 
+          mapped to fields in the dataset. Output steps still pass the data 
+          to downstream steps, allowing outputs to be chained in interesting ways.
+          The output step does not change the individual values in the row 
+          in any way.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/output-step.png"
+        />
+        <p> 
+          To configure the output step, drag the output icon from the palette and place
+          it in your workflow. Use the <em>Select Dataset</em> drop-down menu to
+          select the dataset you want to write to. Then map the workflow data fields
+          to their respective dataset fields.
+        </p>
+        <p>The output step also supports these additional features:
+          <ul>
+            <li>An optional filter that controls what data will be written to the output 
+              dataset. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target dataset when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
+        </p>
+        <h4 id="aws-step">AWS Output</h4>
+        <p>
+          The <em>AWS Output</em> step writes data to Amazon S3 as CSV. During
+          step configuration, elements of the data rows passing through the step
+          are mapped to fields in a delimited file. Output steps still pass the
+          data to downstream steps, allowing outputs to be chained in
+          interesting ways. The output step does not change the individual
+          values in the row in any way.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/docs_screenshots/aws-step.png"
+        />
+        <p> 
+          To configure the AWS output step, drag the AWS output icon from the palette and place
+          it in your workflow. You will need some information about your AWS deployment, as
+          well as API credentials in order to connect to S3. Your AWS administrator may need
+          to assist you in obtaining this information. Enter:
+        </p>
+        <ul>
+          <li>Access Key - first part of credentials for Amazon S3</li>
+          <li>Secret Key - second part of credentials for Amazon S3</li>
+          <li>Region Code - the AWS region in which your S3 bucket is located</li>
+          <li>Bucket Name = the name of the S3 bucket you want to save to
+          <li>File Name - the file name
+        </ul>
+         <p>
+          Once the S3 information above has been completed, select the data elements you wish
+          to include in the file by clicking the checkbox next to the element name. Note the
+          <em>Format</em> drop-down menu, at this time, changing formats is supported for 
+          date type fields, for date fields, selecting a format of <em>Time Text</em> is
+          recommended for most cases. 
+        </p>
+        <p>
+          <em>S3 File Names</em><br/>
+          You may use S3 path separator characters in the file name to place your files in 
+          a folder hierarchy. You can create dynamic file names using variable replacement. 
+          Variables take the form: $variable_name. The following variable may be used in file 
+          names:
+        </p>
+        <ul>
+          <li>$jobname - the name of the workflow</li>
+          <li>$scenario - the value of the <em>Scenario</em> name given to workflow</li>
+          <li>$runid - the unique execution identifier for the current workflow run</li>
+          <li>$runby - the name of the user who executed the workflow</li>
+          <li>$started - the timestamp (in numeric form) of the workflow execution</li>
+        </ul>
+        <p>The AWS output step also supports these additional features:
+          <ul>
+            <li>The ability to change the field delimiter in the output file, ',' is the default.
+            <li>An optional filter that controls what data will be written to the output 
+              file. All data rows still pass through the step to any following steps. 
+              Configuring the filter works just like in the <em>Filter</em> step.</li>
+            <li>the Skip Step checkbox which allows you to suspend writing to the 
+              target file when checked. All data rows still pass through the step 
+              to any following steps. </li>
+          </ul>
+        </p>
+        
+        <h3 id="workflow-run">Running Workflows</h3>
+        <p>
+          To run your workflow, open it from the Workflows list and click the <em>Run Workflow</em>
+          button in the lower right corner. A status screen will be displayed. Note that workflows
+          execute in the Numbrz system as background tasks, so you do not need to wait on the
+          status screen for the workflow to complete. 
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/docs_screenshots/wf-status.png"
+        />
+        <p>
+          Depending upon how long the workflow takes to complete, the status page may display
+          different information. All workflows go through the following phases:
+        </p>
+        <ul>
+          <li>Queued - the workflow run request is received, and the workflow is awaiting execution.</li>
+          <li>Running - the workflow is processing, you will see per-step totals begin to increment.</li>
+          <li>Completed - the workflow has finished running.</li>
+        </ul>
+        <p>
+          Workflows may also display a <em>Failed</em> status. This status will be accompanied 
+          by additional messages describing the problem.
+        </p>
+        <p>
+          If there is a problem with the workflow or it is behaving unexpectedly, the workflow may be 
+          cancelled by clicking the <em>Cancel Workflow</em> button in the lower right corner of
+          the status screen.
+        </p>
 
-        <h4 id="workflow-output-step">Output Step</h4>
-        <p>
-          This will be the final step in this workflow. It will store results in
-          the Monthly Payroll dataset (A linked Google Sheet) that was created
-          previously. In addition to input data and the results of step
-          processing, several built-in data fields are available. We will use
-          several of these to uniquely identify each execution of our workflow,
-          so that the output data can be used to compare different scenarios.
-        </p>
-        <p>
-          Start by dragging the Output step from the palette and dropping it
-          below the Aggregate step created above. Give it a title like Output
-          Monthly Salaries.
-        </p>
-        <p>
-          Under outputs, map workflow data elements to the appropriate dataset
-          field. Note that the available data fields have been categorized.
-        </p>
-        <p>
-          Workflow Data to Output Dataset:
-        </p>
-        <div class="ui bulleted list">
-          <div class="item">Builtins -> Run ID to Run ID</div>
-          <div class="item">Builtins -> Run By to Run By</div>
-          <div class="item">Builtins -> Time Started to Run At</div>
-          <div class="item">Calendar -> Month to Month</div>
-          <div class="item">Aggregate -> Sum of Monthly Salary to Salary</div>
-          <div class="item">
-            Aggregate -> Sum of Monthly Headcount to Headcount
-          </div>
-        </div>
-        <p>Your workflow should now look like this:</p>
-        <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/output-step.png"
-        />
-
-        <h4 id="workflow-status">Running Headcount Workflow</h4>
-        <p>
-          Once all steps have been added, and no configuration warnings are
-          displayed, the workflow is ready to run.
-        </p>
-        <p>
-          Click Run Workflow in the lower right corner to execute the workflow.
-          You will see a status page. Note that workflows run in the background,
-          so there is no need to wait on the status page, however in this case,
-          the workflow should complete in just a few seconds, so we'll watch
-          what happens. If all goes as it should, you will see the following
-          after a few seconds:
-        </p>
-        <img
-          class="ui image big bordered rounded"
-          src="assets/images/example_screenshots/run-status.png"
-        />
-        <p>
-          The counts displayed on the final status may be different for you,
-          depending on how much sample data you added to your Google Sheets.
-          Have a look at your Monthly Payroll sheet. You should see one row of
-          data for each month in your calendar.
-        </p>
+        <h2 id="projects-anchor">Projects</h2>
+        <h3>Overview</h3>
       </div>
       <div id="sidebar-right">
         <div class="ui accordion">
           <div class="title">
             <i class="dropdown icon"></i>
-            Headcount Tutorial
+            <a href="#functions-header">Functions</a>
           </div>
           <div class="content">
             <div class="ui bulleted list">
-              <div class="item"><a href="#tutorial-overview">Overview</a></div>
-              <div class="item"><a href="#project-header">Setting Up A Project</a></div>
-              <div class="item"><a href="#functions-header">Setting Up Functions</a>
-              <div class="list">
-                <div class="item"><a href="#functions-overview">Overview</a></div>
-                <div class="item"><a href="#functions-inputs">Inputs and Outputs
-                  </a></div>
-                <div class="item"><a href="#functions-monthly-calc">Calculating Monthly Salary
-                  </a></div>
-                <div class="item"><a href="#functions-current-calc">Calculating the Current Month's Salary
-                  </a></div>
-                <div class="item"><a href="#functions-interlude">Interlude: Numbrz Functions are Templates</a></div>
-                <div class="item"><a href="#functions-finishing-salary">Finishing the Salary Logic
-                  </a></div>
-                <div class="item"><a href="#functions-headcount-calc">Adding the Headcount Calculation
-                  </a></div>
-                
-                
-
-              </div>
-              
-              </div>
+              <div class="item"><a href="#functions-overview">Overview</a></div>
+              <div class="item"><a href="#functions-canvas">Canvas</a></div>
               <div class="item">
-                <a href="#datasets-header">Setting Up Datasets</a>
+                <div><a href="#widgets-header">Widgets</a></div>
                 <div class="list">
                   <div class="item">
-                    <a href="#connect-gsheets">Connecting GSheets to Numbrz</a>
+                    <a href="#widgets-overview">Overview</a>
                   </div>
+                  <div class="item"><a href="">Data</a></div>
+                  <div class="item"><a href="">Date</a></div>
+                  <div class="item">
+                    <a href="#widgets-arithmetic">Arithmetic</a>
+                  </div>
+                  <div class="item"><a href="#widgets-lookup">Lookup</a></div>
+                  <div class="item"><a href="#widgets-switch">Switch</a></div>
+                  <div class="item"><a href="#widgets-input">Input</a></div>
+                  <div class="item"><a href="#widgets-output">Output</a></div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Data
+          </div>
+          <div class="content">
+            <div class="ui bulleted list">
+              <div class="item"><a href="#data-overview">Overview</a></div>
+              <div class="item">
+                <a href="#data-create">Creating Datasets</a>
               </div>
               <div class="item">
-                <a href="#workflow-header">Setting Up A Workflow</a>
+                <a href="#data-change">Changing Datasets</a>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Workflows
+          </div>
+          <div class="content">
+            <div class="ui bulleted list">
+              <div class="item"><a href="#workflow-overview">Overview</a></div>
+              <div class="item">
+                <a href="#workflow-create">Creating Workflows</a>
+              </div>
+              <div class="item">
+                <div><a href="#workflow-steps">Workflow Steps</a></div>
                 <div class="list">
-                  <div class="item">
-                    <a href="#workflow-overview">Overview</a>
-                  </div>
-                  <div class="item">
-                    <a href="#workflow-fill-step">Fill Data Step</a>
-                  </div>
-                  <div class="item">
-                    <a href="#workflow-exec-step">Execute Function Step</a>
-                  </div>
-                  <div class="item">
-                    <a href="#workflow-aggr-step">Aggregate Step</a>
-                  </div>
-                  <div class="item">
-                    <a href="#workflow-output-step">Output Step</a>
-                  </div>
-                  <div class="item">
-                    <a href="#workflow-status">Running Headcount Workflow</a>
-                  </div>
+                  <div class="item"><a href="#fill-step">Fill</a></div>
+                  <div class="item"><a href="#exec-step">Execute</a></div>
+                  <div class="item"><a href="#aggr-step">Aggregate</a></div>
+                  <div class="item"><a href="#filter-step">Filter</a></div>
+                  <div class="item"><a href="#output-step">Output</a></div>
+                  <div class="item"><a href="#aws-step">AWS Output</a></div>
                 </div>
               </div>
+              <div class="item"><a href="#workflow-run">Running Workflows</a></div>
+            </div>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Projects
+          </div>
+          <div class="content">
+            <div class="ui bulleted list">
+              <div class="item"><a href="">Overview</a></div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div id="footer-wrapper">
-        <p>Have Questions? <br/><a href="mailto:support@numbrz.com">support@numbrz.com</a></p> 
-        <p>Ⓒ 2019 Numbrz, Inc.</p>
-      </div>
+      <p>Have Questions? <br/><a href="mailto:support@numbrz.com">support@numbrz.com</a></p> 
+      <p>Ⓒ 2019 Numbrz, Inc.</p>
+    </div>
     <script>
       $(".ui.accordion").accordion();
+
+      $("#widgets-video").click(function() {
+        $(".ui.modal").modal("show");
+      });
+      $("#lookup-video").click(function() {
+        $(".lookup-video").modal("show");
+      });
     </script>
   </body>
 </html>

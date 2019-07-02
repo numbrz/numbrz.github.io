@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz - Tutorial</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+  <body>
+    <div id="header-wrapper">
+      <div id="header">
+        <div id="site-logo"></div>
+        <div id="nav">
+          <a href="index.html">Features</a>
+          <a href="tutorial.html" class="active">Tutorial</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Headcount Tutorial</h2>
+        <h3 id="tutorial-overview">Overview</h3>
+        <p>
+          In this tutorial we will build a model which will forecast monthly salary 
+          expenses and total headcount. Our model will address a somewhat simplified 
+          version of a real-world problem that is often solved using a spreadsheet. We 
+          will process an employee table containing start and termination dates and current 
+          salaries into a series of monthly totals for planning or forecasting. Consider 
+          the spreadsheet below, which endeavors to address this case.
+        </p>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/example_screenshots/sheet-example.png"
+        />
+        <p>
+          Using a spreadsheet to perform these calculations works, but has several weaknesses 
+          that become evident as the amount of data and number of calculations grows.
+        </p>
+        <h4>New data requires structural changes</h4>
+        <p>
+          Spreadsheets may often combine data and calculations tightly. In our example, 
+          if you want to add more employees or additional forecast dates, you have to insert 
+          rows and columns and copy formulas and formats.
+        </p>
+        <h4>Formulas are difficult to follow</h4>
+        <p>
+          Even in our simplified example, it is difficult to explain and document the various 
+          formulas used. As the complexity of a spreadsheet grows, this worsens to the point 
+          that only a handful of persons in the organization may really understand what the 
+          formulas do.
+        </p>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/example_screenshots/sheet-formulas.png"
+        />
+        <h4>Collaboration is difficult</h4>
+        <p>
+          The tight coupling of data and calculation, as well as the concentration of understanding 
+          in just a few persons make collaboration and division of tasks difficult.
+        </p>
+        <h4>Processes cannot be automated</h4>
+        <p>
+          Spreadsheets are not applications, performing any updates always requires manual work.
+        </p>
+        <h4>The Numbrz Solution</h4>
+        <p>
+          In the sections that follow, we will build a solution consisting of the following elements:
+          <ol>
+            <li>
+              Simple data tables representing our employee list and the calendar of dates we wish to 
+              plan or forecast. This data will not be commingled with calculations and will be easy 
+              to change regardless of how complex the overal system becomes. Indeed, persons responsible 
+              for maintaining such data can work separately from yet in collaboration with maintainers 
+              of other system components.
+            </li>
+            <li>
+              An easy-to-understand function that calculates salary expense and headcount. In Numbrz, 
+              functions are clear and self-documenting, unlike formulae in spreadsheets.
+            </li>
+            <li>
+              An automated workflow that uses this function to process our employee and calendar data 
+              into a destination spreadsheet that can be used for visualization and further analysis. 
+              Workflows turn data and functions into full-blown applications.
+            </li>
+          </ol>
+        </p>
+        <h3 id="project-header">Setting Up A Project</h3>
+        <p>
+          To get started, let's create a project that will hold all of the artifacts required by our headcount workflow. Simply navigate to Projects tab if you are not already there and click '+' icon located on the bottom right corner. Title your project appropriately and click 'Add'. Now you have a place to store any number of functions, data sources, and workflows related to your headcount model. You should see a screen similar to the one below:
+        </p>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/example_screenshots/empty-project.png"
+        />
+
+        <h3 id="functions-header">Setting Up Functions</h3>
+        <h4 id="functions-overview">Overview</h4>
+        <p>
+          The monthly salary function will accept the following inputs:
+        </p>
+        <div class="ui list bulleted">
+          <div class="item">Annual salary of an employee</div>
+          <div class="item">Start date for the employee</div>
+          <div class="item">Termination date for the employee</div>
+          <div class="item">Month to calculate</div>
+          
+        </div>
+        <p>It will produce the following outputs:</p>
+          <div class="ui list bulleted">
+            <div class="item">Monthly salary</div>
+            <div class="item">Headcount contribution for the month (0 or 1)
+            </div>
+          </div>
+        <p>
+            To get started, select Functions tab and click the '+' button in the lower right corner. You should see a dialog similar to the following:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/create_function.png"
+        />
+        <p>
+            Give the function a name (Monthly Salary) and click 'Add'. This will create the function and add it to our project. Click the newly created function to open the Modeler. You should see an empty canvas:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/empty_canvas.png"
+        />
+
+        <h4 id="functions-inputs">Inputs and Outputs</h4>
+        <p>
+            First, let's add the inputs to the function. Functions accept input using an Input widget. To add one, double-click on the canvas to bring up the Add Widget dialog. The location you click will determine where the new widget will be placed. You should a dialog similar to the following:
+        </p>
+        <img
+        class="ui image large rounded bordered"
+        src="assets/images/example_screenshots/input_widget.png"
+      />
+      <p>
+          Select 'Input' from the list of widgets on the left, and click 'Add'. Congratulations, you created your first widget! You can double-click on the widget title to change the title. Next, let's add three more inputs. Rows can be added like this:
+      </p>
+      <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/input_widget_2.gif"
+    />
+    <p>
+        Repeat this three times to create four input rows, then add labels and enter sample values:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/input_widget_3.png"
+    />
+    <p>
+        Next, follow the same process to add an Output widget and give it a single row labeled 'Monthly Salary.' Output widgets are used to collect the outputs of a function. These outputs will be used in the Headcount workflow we'll build a little bit later.
+    </p>
+    <h4 id="functions-monthly-calc">Calculating Monthly Salary</h4>
+    <p>
+        To convert the annual salary we're given as input to a monthly salary, we're going to use a Division widget. As the name suggests, division widgets are used to compute quotients. To add one, double-click the canvas, select 'Division' from the list of widgets on the Add Widget dialog and click 'Add.' You can also quickly select and add a widget by double-clicking it.
+    </p>
+    <p>To compute the monthly salary, we simply need to divide the annual salary by 12. Set up the widget as follows:</p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_1.png"
+    />
+    <p>
+        Next, we have to reference the annual salary input in our division widget. To do this, we create a Link. A link is an association between cells which causes changes to the source cell to be propagated to the target. To create a link, drag the source cell onto the target cell:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_2.gif"
+    />
+    <p>
+        We're now calculating monthly salary. To use this as the output for the function, create a link from the result cell in our division widget to the output widget we created earlier:
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_3.png"
+    />
+    <p>
+        We now have a working function! It's currently very simple - all it does is compute the monthly salary from an annual salary, but it can be used in any workflow where such a calculation might be useful.
+    </p>
+    <h4 id="functions-current-calc">Calculating the Current Month's Salary</h4>
+<p>To make our function a little more useful, we need to take into consideration the employee's start and termination dates. We will update our logic to only pay the employee for months that they are actually employed. To keep this tutorial simple, we won't pro-rate this calculation for partial months, but this can be accomplished using the same techniques described here.</p>
+<p>To get started, we need to convert the start and termination dates to months. To do this we're going to use a Date widget. The date widget is very useful: it can be used to split a date into a day, month and year, or compose a date from a day, month, and year. We're going to use both of these capabilities.
+
+  </p>
+  <p>Start by adding a date widget, and linking the start date to the 'Date' cell:
+
+    </p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_4.png"
+    />
+    <p>Next, calculate the start month by linking the year and month of the start date, and hard-coding the day to '1':</p>
+    <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_5.gif"
+    />
+    <p>Repeat these steps to calculate the termination month and current month:
+
+      </p>
+      <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_6.png"
+    />
+    <h4 id="functions-interlude">Interlude: Numbrz Functions are Templates
+
+      </h4>
+      <p>
+          When a function is used in a workflow (we'll create a headcount workflow next), the Numbrz engine replaces the inputs of the function with values pulled from the data sources you specify. In this way, a Numbrz function acts like a template, keeping the logic of your calculations completely separate from your data. This means the values you place in the inputs of your function can be anything. This makes it easy to experiment with your function and verify that it's working as expected. You can see this in action by playing with different values in the inputs.
+
+
+      </p>
+      <h4 id="functions-finishing-salary">Finishing the Salary Logic</h4>
+<p>To complete our salary function, we'll need one more type of widget: the Switch widget. Switch widgets are used to produce values based on a set of rules. We're going to use this widget to figure out if the employee was employed for the current month. Start by adding a new Switch widget:
+
+  </p>
+  <img
+      class="ui image big rounded bordered"
+      src="assets/images/example_screenshots/calc_7.png"
+    />
+
+
+<p>The switch widget is a little more complicate than the other widgets we've seen so far. It is made of up three sections:</p>
+<div class="ui list bulleted">
+  <div class="item">First, the variables section contain the inputs to the widget. You can add as may variables as you want.
+    </div>
+  <div class="item">Next, the rules compare variables against other values, and specify the result should the rule match. Each rule contains one or more conditions and the rule matches only if all of the conditions of that rule match.
+    </div>
+
+  <div class="item">Finally, the _result contains the result after applying the rules.
+    </div>
+
+
+</div>
+<p>So, let's set up our salary logic. We're going to need the start month and term month as variables:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_8.png"
+/>
+
+<p>Next, update the first rule so it checks if the employee started no later than the current month, and terminated no earlier than the current month:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_9.gif"
+/> 
+<p>Next, we need this rule to output the monthly salary when it matches:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_10.png"
+/> 
+<p>This takes care of outputting the previously calculated monthly salary when the employees is employed in the current month. To handle the case where they are not, we take advantage of the Else rule, which is only used when no other rule matches. In this case, we want the salary to be zero. To achieve this, set the result value for the 'Else' rule to '0':
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_11.png"
+/> 
+<p>We're almost done! We just need to use the result of our Salary Logic widget as the output for our function:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_12.png"
+/>  
+
+<h4 id="functions-headcount-calc">Adding the Headcount Calculation
+
+  </h4>
+<p>To complete our function, we need to add the logic to calculate the employee's headcount contribution for the current month. This works very similarly to the salary logic, and just requires a second switch widget:
+
+  </p>
+  <img
+  class="ui image big rounded bordered"
+  src="assets/images/example_screenshots/calc_13.png"
+/>
+
+
+        <h3 id="datasets-header">Setting Up Datasets</h3>
+        <p>
+          In order for our headcount workflow to work with real data we have to
+          configure three datasets: Input, Calendar, and Output. Create a GSheet
+          with three tabs titled: Employee Payroll, Calendar, and Monthly
+          Payroll. The Employee Payroll tab should match the following structure
+          and content:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/EmployeePayroll-GSheet.png"
+        />
+        <p>
+          The Calendar tab should match the following structure and content:
+        </p>
+        <img
+          class="ui image large rounded bordered"
+          src="assets/images/example_screenshots/Calendar-GSheet.png"
+        />
+        <p>
+          The Monthly Payroll tab should match the following structure and
+          content:
+        </p>
+        <img
+          class="ui image big rounded bordered"
+          src="assets/images/example_screenshots/Output-GSheet.png"
+        />
+
+        <h4 id="connect-gsheets">Connecting GSheets to Numbrz</h4>
+        <p>
+          Before we can use the GSheets we created in our workflow, we need to
+          connect them to Numbrz. Connecting external data sources is easy,
+          simply click the '+' icon located on the bottom right corner of the Data
+          tab screen and fill out the necessary information. In our case, we
+          want to connect a GSheet, which is the default external data source.
+        </p>
+        <p>
+          For each GSheet tab in our document: copy the url from the browser and
+          paste it into the form, title each dataset accordingly, and click
+          'Connect'.
+        </p>
+        <img
+          class="ui image bordered rounded big"
+          src="assets/images/example_screenshots/gsheet-url.png"
+        />
+        <p>
+          We will also need to share our GSheet with Numbrz. To do so, copy the
+          Numbrz agent information from the dialog.
+        </p>
+        <img
+          class="ui image bordered rounded large"
+          src="assets/images/example_screenshots/numbrz-share.png"
+        />
+        <p>
+          In Gsheets, click 'Share' in the top right corner and paste the copied
+          address into the form.
+        </p>
+        <div
+          class="ui images bordered rounded medium
+        "
+        >
+          <img
+            class="ui image "
+            src="assets/images/example_screenshots/gsheet-share.png"
+          />
+          <img
+            class="ui image "
+            src="assets/images/example_screenshots/gsheet-share-2.png"
+          />
+        </div>
+        <p>
+          The final list of datasets in Numbrz should look similar to the one
+          below:
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/datasets-final.png"
+        />
+
+        <h3 id="workflow-header">Setting Up A Workflow</h3>
+        <h4 id="workflow-overview">Overview</h4>
+        <p>
+          The purpose of this workflow is to combine the execution of the
+          previously constructed Headcount function and some basic aggregation
+          to produce summary output that can be used for planning and
+          forecasting. The workflow will:
+        </p>
+        <div class="ui ordered list">
+          <div class="item">
+            Iterate over the Employee Payroll data and apply our Calendar, which
+            is the series of dates we want to forecast or plan.
+          </div>
+          <div class="item">
+            For each combination of employee record and calendar month, execute
+            our function.
+          </div>
+          <div class="item">Total the function output by month.</div>
+          <div class="item">
+            Write the totals to the Monthly Payroll dataset previously defined.
+          </div>
+        </div>
+        <p>
+          Begin a new workflow by selecting the Workflows tab and clicking the
+          '+' in the lower right corner. You should see a dialog similar to the
+          following:
+        </p>
+        <img
+          class="ui image large bordered rounded"
+          src="assets/images/example_screenshots/add-workflow.png"
+        />
+        <p>
+          Give your workflow meaningful name like Tutorial - Headcount and
+          optionally a Scenario name, which is just an extra user-definable
+          category you may apply to your workflows. Finally, in the Source Data
+          drop down, select the Employee Payroll dataset previously configured
+          and click Create. You will now see the Workflow Builder.
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/workflow-builder.png"
+        />
+        <p>
+          Note the warning letting you know that no steps have been configured.
+          We will now add steps to make this workflow functional.
+        </p>
+        <h4 id="workflow-fill-step">Fill Data Step</h4>
+        <p>
+          The first step to add will be a Fill step. Fill produces a union of
+          input data and some other dataset. It will produce up to 300 fill
+          records for each input record. A common use of Fill is to join data
+          with a calendar of dates, which is what we will do.
+        </p>
+        <p>
+          Drag the Fill step from the palette to the right and drop it below the
+          Workflow Settings. Note that you can edit the default title 'Fill Data
+          Step' to make it more meaningful try changing the title to Apply
+          Calendar. Now select the Calendar dataset you previously created from
+          the drop down and, in the fill fields section, select the Month field.
+          Your workflow should now look like this.
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/fill-step.png"
+        />
+        <p>
+          Note the icon to the right of the step title. This is a
+          expand/collapse button. It can be helpful to collapse the
+          configurations as you complete each step, making more room on screen
+          to view the workflow without scrolling.
+        </p>
+        <h4 id="workflow-exec-step">Execute Function Step</h4>
+        <p>
+          Now we have employee payroll data and our period month ends flowing
+          through the workflow. We will use our Payroll function to actually
+          calculate the employees total salary per period.
+        </p>
+        <p>
+          To execute a function, drag an Execute step from the palette and drop
+          it below the Fill step. Give the step a name like Calculate Monthly
+          Payroll and , from the drop-down, select the function you built
+          previously. Under inputs, map workflow data elements to the
+          appropriate function input. Note that the available data fields have
+          been categorized by source.
+        </p>
+        <p>
+          Workflow Data to Function Input:
+        </p>
+        <div class="ui bulleted list">
+          <div class="item">
+            Employee Payroll -> AnnualSalary to Annual Salary
+          </div>
+          <div class="item">Employee Payroll -> StartDate to Start Date</div>
+          <div class="item">Employee Payroll -> EndDate to Term Date</div>
+          <div class="item">Calendar -> Month to Current Month</div>
+        </div>
+        <p>Your workflow will now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/exec-step.png"
+        />
+
+        <h4 id="workflow-aggr-step">Aggregate Step</h4>
+        <p>
+          Our goal is to produce a forecast by month of payroll costs from our
+          employee data and calendar. To do this, we need to aggregate the
+          payroll data by month. Drag an Aggregate step from the palette, and
+          drop it below the Execute step. Give it a title like Sum Salaries by
+          Period.
+        </p>
+        <p>
+          Under Aggregate, select Sum for Calculation and Monthly
+          Payroll->MonthlySalary for Field. Click '+' to add this calculation.
+          Add another calculation, Sum on Monthly Payroll->Monthly Headcount,
+          click '+' to add this calculation. Under Group By, select Tutorial
+          Calendar->Month Click '+' to add this group.
+        </p>
+        <p>Your workflow will now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/aggr-step.png"
+        />
+
+        <h4 id="workflow-output-step">Output Step</h4>
+        <p>
+          This will be the final step in this workflow. It will store results in
+          the Monthly Payroll dataset (A linked Google Sheet) that was created
+          previously. In addition to input data and the results of step
+          processing, several built-in data fields are available. We will use
+          several of these to uniquely identify each execution of our workflow,
+          so that the output data can be used to compare different scenarios.
+        </p>
+        <p>
+          Start by dragging the Output step from the palette and dropping it
+          below the Aggregate step created above. Give it a title like Output
+          Monthly Salaries.
+        </p>
+        <p>
+          Under outputs, map workflow data elements to the appropriate dataset
+          field. Note that the available data fields have been categorized.
+        </p>
+        <p>
+          Workflow Data to Output Dataset:
+        </p>
+        <div class="ui bulleted list">
+          <div class="item">Builtins -> Run ID to Run ID</div>
+          <div class="item">Builtins -> Run By to Run By</div>
+          <div class="item">Builtins -> Time Started to Run At</div>
+          <div class="item">Calendar -> Month to Month</div>
+          <div class="item">Aggregate -> Sum of Monthly Salary to Salary</div>
+          <div class="item">
+            Aggregate -> Sum of Monthly Headcount to Headcount
+          </div>
+        </div>
+        <p>Your workflow should now look like this:</p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/output-step.png"
+        />
+
+        <h4 id="workflow-status">Running Headcount Workflow</h4>
+        <p>
+          Once all steps have been added, and no configuration warnings are
+          displayed, the workflow is ready to run.
+        </p>
+        <p>
+          Click Run Workflow in the lower right corner to execute the workflow.
+          You will see a status page. Note that workflows run in the background,
+          so there is no need to wait on the status page, however in this case,
+          the workflow should complete in just a few seconds, so we'll watch
+          what happens. If all goes as it should, you will see the following
+          after a few seconds:
+        </p>
+        <img
+          class="ui image big bordered rounded"
+          src="assets/images/example_screenshots/run-status.png"
+        />
+        <p>
+          The counts displayed on the final status may be different for you,
+          depending on how much sample data you added to your Google Sheets.
+          Have a look at your Monthly Payroll sheet. You should see one row of
+          data for each month in your calendar.
+        </p>
+      </div>
+      <div id="sidebar-right">
+        <div class="ui accordion">
+          <div class="title">
+            <i class="dropdown icon"></i>
+            Headcount Tutorial
+          </div>
+          <div class="content">
+            <div class="ui bulleted list">
+              <div class="item"><a href="#tutorial-overview">Overview</a></div>
+              <div class="item"><a href="#project-header">Setting Up A Project</a></div>
+              <div class="item"><a href="#functions-header">Setting Up Functions</a>
+              <div class="list">
+                <div class="item"><a href="#functions-overview">Overview</a></div>
+                <div class="item"><a href="#functions-inputs">Inputs and Outputs
+                  </a></div>
+                <div class="item"><a href="#functions-monthly-calc">Calculating Monthly Salary
+                  </a></div>
+                <div class="item"><a href="#functions-current-calc">Calculating the Current Month's Salary
+                  </a></div>
+                <div class="item"><a href="#functions-interlude">Interlude: Numbrz Functions are Templates</a></div>
+                <div class="item"><a href="#functions-finishing-salary">Finishing the Salary Logic
+                  </a></div>
+                <div class="item"><a href="#functions-headcount-calc">Adding the Headcount Calculation
+                  </a></div>
+                
+                
+
+              </div>
+              
+              </div>
+              <div class="item">
+                <a href="#datasets-header">Setting Up Datasets</a>
+                <div class="list">
+                  <div class="item">
+                    <a href="#connect-gsheets">Connecting GSheets to Numbrz</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <a href="#workflow-header">Setting Up A Workflow</a>
+                <div class="list">
+                  <div class="item">
+                    <a href="#workflow-overview">Overview</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-fill-step">Fill Data Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-exec-step">Execute Function Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-aggr-step">Aggregate Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-output-step">Output Step</a>
+                  </div>
+                  <div class="item">
+                    <a href="#workflow-status">Running Headcount Workflow</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+        <p>Have Questions? <br/><a href="mailto:support@numbrz.com">support@numbrz.com</a></p> 
+        <p>Ⓒ 2019 Numbrz, Inc.</p>
+      </div>
+    <script>
+      $(".ui.accordion").accordion();
+    </script>
+  </body>
+</html>
