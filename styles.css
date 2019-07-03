@@ -75,6 +75,7 @@ body {
 #content h4,
 #content p {
   padding-left: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 
 #content p {
