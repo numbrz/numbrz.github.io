@@ -61,6 +61,7 @@ body {
   padding: 40px 100px 100px 100px;
   height: 100%;
   overflow-y: scroll;
+  scroll-snap-type: y proximity;
   -webkit-overflow-scrolling: touch;
 }
 
