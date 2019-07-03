@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz - Features</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+  <body>
+    <div id="header-wrapper">
+      <div id="header">
+        <a href="http://numbrz.com"><div id="site-logo"></div></a>
+        <div id="nav">
+          <a href="index.html">Features</a>
+          <a href="tutorial.html">Tutorial</a>
+          <a href="support.html" class="active">Support</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-wrapper">
+      <div id="content">
+        <h4>Support</h4>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <p>
+        Have Questions? <br /><a href="mailto:support@numbrz.com"
+          >support@numbrz.com</a
+        >
+      </p>
+      <p>Ⓒ 2019 Numbrz, Inc.</p>
+    </div>
+    <script>
+      $(".ui.accordion").accordion();
+
+      $("#widgets-video").click(function() {
+        $(".ui.modal").modal("show");
+      });
+      $("#lookup-video").click(function() {
+        $(".lookup-video").modal("show");
+      });
+    </script>
+  </body>
+</html>
