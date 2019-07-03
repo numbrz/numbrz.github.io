@@ -61,6 +61,7 @@ body {
   padding: 40px 100px 100px 100px;
   height: 100%;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #content h1 {
