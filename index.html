@@ -53,7 +53,7 @@
         <h2 id="functions-header">Functions</h2>
         <h3 id="functions-overview">Overview</h3>
         <p>
-            Calculations are built graphically in Numbrz using the Modeler. A function is a 
+            Calculations are built graphically in Numbrz using the Modeler. A <em>function</em> is a 
             collection of widgets which provide a variety of capabilities like accepting input, 
             producing output, simple arithmetic, and conditional logic.
         </p>
@@ -101,77 +101,21 @@
         <h4 id="widgets-data">Data</h4>
         <p>
           This is the most basic widget inside Numbrz and it is most commonly
-          used to store static variables that get passed through the function
-          during runtime of a workflow. Data widget is also an integral part of
-          the lookup widget which will cover in the next section.
+          used to store static variables used by the function. The data widget is also
+          an integral part of the <a href="#widgets-lookup">lookup widget</a>.
         </p>
         <img
           class="ui image medium rounded bordered"
           src="assets/images/docs_screenshots/data-widget.png"
         />
 
-        <h4 id="widgets-lookup">Lookup</h4>
-        <p>
-            A Lookup widget searches for a value (lookup value) in a specified column of a Data widget (lookup table) and returns the value based on search criteria.
-        </p>
-        <p>
-            Adding a Lookup widget is a two step process. User must first create a Data widget to serve as a lookup table. Once a Data widget is present on canvas, user can create a Lookup widget by opening the Add Dialog (double click anywhere on canvas) and selecting 'Lookup'. User will then need to select the Data widget (click on item in the list) to be used as the lookup table from the list. 
-        </p>
-        <img
-          class="ui image large rounded bordered"
-          src="assets/images/docs_screenshots/lookup_add.png"
-        />
-        <p>
-            We recommend all column headers of your Data widget are properly labeled prior to adding the Lookup widget.  This will help you use the Lookup widget.  You can also add and change headers after adding the Lookup widget.  
-        </p>
-        <p>
-        The first column of the Lookup widget is a Label.  It does not impact the Lookup function.  Change this value as you wish.
-        </p>
-<p>
-        The second column of the Lookup widget is the Lookup value.  This can be a static value or a Link from another Cell.
-        </p>
-<p>
-        The third column of the Lookup widget is a selectable popup value that represents the Data widget column from which to return the corresponding row value.  You can easily change what result column is being returned.  Values returned by the Lookup widget are presented in green cells.  You can add more columns to the Lookup widget to return more results from different columns of the Data widget.
-</p>
-<img
-          class="ui image big rounded bordered"
-          src="assets/images/docs_screenshots/lookup_widget_complete.png"
-        />
 
+        <h4 id="widgets-date">Date</h4>
         <p>
-            Note, the search column is NOT limited to the first column of a Data Widget.  Use the column header popup to select the Data widget column that will act as the search column.  For example, you could search on the third column and provide results from the fourth column.  
-        </p>
-        <p>
-            In order to provide a correct lookup, it is recommended that your source Data widget is sorted in ascending order.  You can easily reorder your rows by using the slider on the far left side of each row.
-        </p>
-        <p>
-            You can specify the closest match or an exact match for your row selection.  Note, this setting applies to all lookups in that Lookup widget.  If you want some values that are based upon the closest value and some based upon the exact value, you will need to add two Lookup widgets that reference the same Data widget.
-
-        </p>
-      <p>
-          The default search criteria is the closest match without going over the search value.  In order to specify an exact match, select the Lookup widget to make it an active object on the Canvas and open the Left Pane.  Select the ‘Exact Match’ radio button.  This is in the top section of the Left Pane.
-
-      </p>
-      
-      <img
-          class="ui image medium rounded bordered"
-          src="assets/images/docs_screenshots/lookup_leftpane.png"
-        />
-
-        <p>Below is a demonstration of how the Lookup widget is created and configured:</p>
-        <img
-          class="ui image big rounded bordered"
-          src="assets/images/docs_screenshots/Lookup_video.gif"
-        />
-        
-        
-
-
-        <h4>Date</h4>
-        <p>
-          Date widgets, as the name suggests, are used to store and format
-          dates. Simply fill out the date column in the date widget and Numbrz
-          will format the rest.
+          Date widgets are used to parse and generate date values. Each row consists of a date
+          value and its corresponding year, month and day. When a date cell is filled, the
+          year, month and day are extracted. Conversely, a date value can be composed by filling
+          in the year month and day cells.
         </p>
         <img
           class="ui image medium rounded bordered"
@@ -184,7 +128,19 @@
           with Numbrz canvas they become powerful tools for representing complex
           calculations. Currently, Numbrz has 4 built-in arithmetic widgets:
           Sum, Product, Subtraction, and Division. The bottom row of the
-          arithmetic widget represents the calculated row. Depending on the
+          arithmetic widget contains the result value.
+        </p>
+        <img class="ui image medium rounded bordered" src="assets/images/docs_screenshots/arithmetic-simple.png" />
+        <p>
+          By default, the result is updated as the input values are updated. However,
+          arithmetic widgets can be placed in <em>control</em> mode by explicitly specifying
+          a value in the result row (either directly or via a link). In this mode, the
+          result stays fixed, and a <em>variance</em> row is added which is updated as needed to
+          to keep the result correct.
+        </p>
+        <img class="ui image medium rounded bordered" src="assets/images/docs_screenshots/control_total.gif" />
+        <p>
+          Depending on the
           widget, each cell of the calculated row is either the sum, product,
           difference, or the quotient of all the cells in that column. To see
           the calculated value across the row users can add a result column. To
@@ -195,28 +151,67 @@
           class="ui image medium rounded bordered"
           src="assets/images/docs_screenshots/arithmetic-total-col.png"
         />
+        
 
-        <h4>Switch</h4>
+        <h4 id="widgets-lookup">Lookup</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          A Lookup widget searches for a value (lookup value) in a specified column of a Data widget (lookup table) and returns
+          the value based on search criteria.
         </p>
-        <h4>Input</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Adding a Lookup widget is a two step process. First, create a Data widget to serve as a lookup table. Once a
+          Data widget is present on canvas, you can create a Lookup widget by opening the Add Dialog (double click anywhere on
+          canvas) and selecting 'Lookup'. Select the Data widget (click on the item in the list) to be used
+          as the lookup table from the list.
         </p>
-        <h4>Output</h4>
+        <img class="ui image large rounded bordered" src="assets/images/docs_screenshots/lookup_add.png" />
+        <p>
+          We recommend all column headers of your Data widget are properly labeled prior to adding the Lookup widget. This will
+          help you use the Lookup widget. You can also add and change headers after adding the Lookup widget.
+        </p>
+        <p>
+          The first column of the Lookup widget is a Label. It does not impact the Lookup function. Change this value as you
+          wish.
+        </p>
+        <p>
+          The second column of the Lookup widget is the Lookup value. This can be a static value or a Link from another Cell.
+        </p>
+        <p>
+          The third column of the Lookup widget is a selectable popup value that represents the Data widget column from which to
+          return the corresponding row value. You can easily change what result column is being returned. Values returned by the
+          Lookup widget are presented in green cells. You can add more columns to the Lookup widget to return more results from
+          different columns of the Data widget.
+        </p>
+        <img class="ui image big rounded bordered" src="assets/images/docs_screenshots/lookup_widget_complete.png" />
+        
+        <p>
+          Note, the search column is not limited to the first column of a Data Widget. Use the column header popup to select the
+          Data widget column that will act as the search column. For example, you could search on the third column and provide
+          results from the fourth column.
+        </p>
+        <p>
+          In order to provide a correct lookup, it is recommended that your source Data widget is sorted in ascending order. You
+          can easily reorder your rows by using the slider on the far left side of each row.
+        </p>
+        <p>
+          You can specify the closest match or an exact match for your row selection. Note, this setting applies to all lookups
+          in that Lookup widget. If you want some values that are based upon the closest value and some based upon the exact
+          value, you will need to add two Lookup widgets that reference the same Data widget.
+        
+        </p>
+        <p>
+          The default search criteria is the closest match without going over the search value. In order to specify an exact
+          match, select the Lookup widget to make it an active object on the Canvas and open the Left Pane. Select the ‘Exact
+          Match’ radio button. This is in the top section of the Left Pane.
+        
+        </p>
+        
+        <img class="ui image medium rounded bordered" src="assets/images/docs_screenshots/lookup_leftpane.png" />
+        
+        <p>Below is a demonstration of how the Lookup widget is created and configured:</p>
+        <img class="ui image big rounded bordered" src="assets/images/docs_screenshots/Lookup_video.gif" />
+
+        <!-- <h4>Switch</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -225,6 +220,25 @@
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
+        </p> -->
+
+        <h4 id="widgets-input">Input</h4>
+        <p>
+          Input widgets are used to specify the inputs that are accepted by a function. When running
+          a workflow, the values in the function's input widget are filled in by the workflow engine.
+          Functions can accept any number of inputs: each row in an input widget can be filled by a
+          workflow.
+        </p>
+        <p>
+          Functions which do not contain an input widget cannot be used in workflows.
+        </p>
+
+        <h4 id="widgets-output">Output</h4>
+        <p>
+          Output widgets are used to specify the outputs that are produced by a function.
+        </p>
+        <p>
+          Functions which do not contain an output widget cannot be used in workflows.
         </p>
         <h2 id="data-anchor">Data</h2>
         <h3 id="data-overview">Overview</h3>
@@ -238,8 +252,8 @@
           already resides. The datasets that are available to you are listed in
           the Datasets tab of the Numbrz application.
         </p>
+        <h3>Working with Data in Numbrz</h3>
         <p>
-          <em>Working with Data in Numbrz</em><br/>
           Your Datasets are organized under the <em>Data</em> tab of the Numbrz application
           or in a <a href="#projects-anchor">Project</a> that you have established. You can delete a 
           dataset you no longer want by clicking the <em>Delete</em> icon on the workflow list item. 
@@ -696,8 +710,8 @@
                   <div class="item">
                     <a href="#widgets-overview">Overview</a>
                   </div>
-                  <div class="item"><a href="">Data</a></div>
-                  <div class="item"><a href="">Date</a></div>
+                  <div class="item"><a href="#widgets-data">Data</a></div>
+                  <div class="item"><a href="#widgets-date">Date</a></div>
                   <div class="item">
                     <a href="#widgets-arithmetic">Arithmetic</a>
                   </div>
