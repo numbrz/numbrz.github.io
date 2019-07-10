@@ -420,19 +420,19 @@
           Note the warning letting you know that no steps have been configured.
           We will now add steps to make this workflow functional.
         </p>
-        <h4 id="workflow-fill-step">Fill Data Step</h4>
+        <h4 id="workflow-fill-step">Combine Data Step</h4>
         <p>
-          The first step to add will be a Fill step. Fill produces a union of
-          input data and some other dataset. It will produce up to 300 fill
-          records for each input record. A common use of Fill is to join data
+          The first step to add will be a Combbine step. Combine produces a union of
+          input data and some other dataset. It will produce up to 300 combined
+          records for each input record. A common use of Combine is to join data
           with a calendar of dates, which is what we will do.
         </p>
         <p>
-          Drag the Fill step from the palette to the right and drop it below the
-          Workflow Settings. Note that you can edit the default title 'Fill Data
+          Drag the Combine step from the palette to the right and drop it below the
+          Workflow Settings. Note that you can edit the default title 'Combine Data
           Step' to make it more meaningful try changing the title to Apply
           Calendar. Now select the Calendar dataset you previously created from
-          the drop down and, in the fill fields section, select the Month field.
+          the drop down and, in the fields section, select the Month field.
           Your workflow should now look like this.
         </p>
         <img
@@ -453,7 +453,7 @@
         </p>
         <p>
           To execute a function, drag an Execute step from the palette and drop
-          it below the Fill step. Give the step a name like Calculate Monthly
+          it below the Combine step. Give the step a name like Calculate Monthly
           Payroll and , from the drop-down, select the function you built
           previously. Under inputs, map workflow data elements to the
           appropriate function input. Note that the available data fields have
@@ -603,7 +603,7 @@
                     <a href="#workflow-overview">Overview</a>
                   </div>
                   <div class="item">
-                    <a href="#workflow-fill-step">Fill Data Step</a>
+                    <a href="#workflow-fill-step">Combine Data Step</a>
                   </div>
                   <div class="item">
                     <a href="#workflow-exec-step">Execute Function Step</a>

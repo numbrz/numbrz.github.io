@@ -375,7 +375,7 @@
         </p>
         <ul>
           <li>Input Data Records are limited to 5000 rows</li>
-          <li>Fill (see Fill Step) records are limited to 50 rows</li>
+          <li>Combine (see Combine Step) records are limited to 50 rows</li>
           <li>The total duration of a workflow is limited to 30 minutes
         </ul>
         <p>
@@ -476,14 +476,14 @@
 
         <h3 id="workflow-steps">Workflow Steps</h3>
 
-        <h4 id="fill-step">Fill</h4>
+        <h4 id="fill-step">Combine Data</h4>
         <p>
-          The <em>Fill</em> step combines rows from the input dataset with rows
+          The <em>Combine</em> step combines rows from the input dataset with rows
           from a secondary dataset to produce a cross-join of the two datasets.
-          In other words, for each row of input, the fill step emits rows that
+          In other words, for each row of input, the combine step emits rows that
           combine the data of the input row with the data of each row of the
-          fill dataset. If the fill dataset consists of 10 rows, then for every
-          input row, 10 rows are emitted. Fill steps are often used to augment
+          combine dataset. If the combine dataset consists of 10 rows, then for every
+          input row, 10 rows are emitted. combine steps are often used to augment
           input with a calendar of dates, for time-based processing.
         </p>
         <img
@@ -491,12 +491,12 @@
           src="assets/images/docs_screenshots/fill-step.png"
         />
         <p>
-          To configure a fill step, drag the fill icon from the palette and place
-          it in your workflow. Select the fill dataset from the <em>Select Dataset</em>
+          To configure a combine step, drag the combine icon from the palette and place
+          it in your workflow. Select the combine dataset from the <em>Select Dataset</em>
           drop-down menu. In the resulting field list, check the fields you want to
           include in the row this step will emit.
         </p>
-        <h4 id="exec-step">Execute</h4>
+        <h4 id="exec-step">Execute Function</h4>
         <p>
           The <em>Execute Function</em> step uses data from the input rows to
           run a Numbrz Function. The step allows the user to map data elements
@@ -777,8 +777,8 @@
               <div class="item">
                 <div><a href="#workflow-steps">Workflow Steps</a></div>
                 <div class="list">
-                  <div class="item"><a href="#fill-step">Fill</a></div>
-                  <div class="item"><a href="#exec-step">Execute</a></div>
+                  <div class="item"><a href="#fill-step">Combine Data</a></div>
+                  <div class="item"><a href="#exec-step">Execute Function</a></div>
                   <div class="item"><a href="#aggr-step">Aggregate</a></div>
                   <div class="item"><a href="#filter-step">Filter</a></div>
                   <div class="item"><a href="#output-step">Output</a></div>
