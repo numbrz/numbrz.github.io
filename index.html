@@ -211,16 +211,34 @@
         <p>Below is a demonstration of how the Lookup widget is created and configured:</p>
         <img class="ui image big rounded bordered" src="assets/images/docs_screenshots/Lookup_video.gif" />
 
-        <!-- <h4>Switch</h4>
+        <h4>Switch</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p> -->
+          The Switch Widget allows you to add decision logic to your function. One or more values are evaluated against a
+          set of <em>rules</em>, when a rule evaluates to <em>true</em> the widget result column takes on the specified
+          value. When you incorporate links from other widgets to receive the values to evaluate and receive the results,
+          some fairly complex functionality may be implemented.
+              
+        </p>
+        
+        <img class="ui image big rounded bordered" src="assets/images/docs_screenshots/switch-widget.png" />
+        
+        <p>
+          In the example above, note the three main sections:
+        </p>
+        <ul>
+          <li>The variables section contain the inputs to the widget. You can add as may variables as you want. We have 
+            just one above, <em>Years as member</em>.</li>
+          <li>The rules compare variables against other values, and specify the result should the rule match. Each rule 
+            contains one or more conditions and the rule matches only if all of the conditions of that rule match. Above 
+            we have 3 rules for calculating Bronze, Silver, and Gold membership levels.</li>
+          <li>The result contains the result after applying the rules. In the above example, we have calculated the 
+            membership level to be Silver.</li>
+        </ul>
+        <p>
+          Below is a short video showing the addition of a new rule to an existing switch widget.
+        </p>
+        
+        <img class="ui image big rounded bordered" src="assets/images/docs_screenshots/switch-widgetA.gif" />
 
         <h4 id="widgets-input">Input</h4>
         <p>
