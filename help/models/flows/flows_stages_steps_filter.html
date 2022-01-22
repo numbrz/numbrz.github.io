@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Filter Step</h2>
+        <p>This step applies a user-definable set of conditions to each record. If the conditions match, the record is passed on to the following steps. If there is no match, the record is discarded. Filters can be used when processing sets of input records that may contain rows that are not of interest in the current analysis. </p>
+        <h3>Configuration</h3>
+        <p>To configure a Filter, start by clicking the <i>Add Filter</i> button, then complete the following.</p>
+        <ul class="list">
+          <li><b>Field</b> - select a field to apply the condition to.</li>
+          <li><b>Operation</b> - select an comparison, for example '='.</li>
+          <li><b>Value</b> - enter a value to compare the field value to. You can enter a specific value or set it from data values in the current record.</li>
+        </ul>
+        <p>Click the + icon to add the condition. You can add more conditions to the list. For multiple conditions, all must match for the filter to match. </p>
+        <img src="images/conf_filter.gif" alt="Configure a Filter" class="giphy-med" />
+        <p>You can specify an alternative set of conditions by click the <i>Add OR Filter</i> button. When this is done, <i>either</i> the first set <i>or</i> the second set of conditions must match. In this example, only records with both <b>Hire Date</b> greater 1/01/2020 AND <b>Salary</b> equal to 100,000; OR records with <b>Name</b> equal to 'Smith' will pass to the next steps.</p>
+        <hr />
+        <p><em>See also: <a href="flows_stages_steps.html">About Stage Steps</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

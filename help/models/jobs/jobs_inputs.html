@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Inputs</h2>
+        <p>In the <b>Inputs</b> section of <b>Job</b> configuration, the specific data-sources that provide records to a flow are selected and their fields mapped to the fields specified by the flow. Take note of the following options and attributes.</p>
+        <ul class="list">
+          <li><i>Open Flow</i> button - this allows quick access to the job's <b>Flow</b>.</li>
+          <li><i>Refresh Columns</i> button - if the connected data source or flow has changed since last edit, use this button to refresh the list of fields that must be mapped.</li>
+          <li><i>Change Source</i> button - click this to select a different data-source.
+          <li><i>Column Mapping</i> - Each data field required by the flow (<b>Flow Input</b>) must be mapped to the selected data target (<b>Data Column</b>).</li>
+        </ul>
+        <h3>Filtering Input</h3>
+        <p>When configuring inputs, use filters to select a subset of the records in the data-source, only records that match the filter's conditions will be sent to the flow. To configure a Filter, start by clicking the <i>Add Filter</i> button, then complete the following.</p>
+        <ul class="list">
+          <li><b>Field</b> - select a field to apply the condition to.</li>
+          <li><b>Operation</b> - select a comparison, for example '='.</li>
+          <li><b>Value</b> - enter a value to compare the field value to.</li>
+        </ul>
+        <p>Click the + icon to add the condition. You can add more conditions to the list. For multiple conditions, all must match for the filter to match. </p>
+        <p>You can specify an alternative set of conditions by clicking the <i>Add OR Filter</i> button. When this is done, <i>either</i> the first set <i>or</i> the second set of conditions must match.</p>
+        <img src="images/filter_input.png" alt="Input Filter" class="static-80" />
+        <p>In this example, only records with both <b>Hire Date</b> greater 1/01/2020 AND <b>Salary</b> equal to 100,000; OR records with <b>Name</b> equal to 'Smith' will sent to the flow.</p>
+        <hr />
+        <p><em>See also: <a href="jobs_create.html">Create a Job</a>, <a href="jobs_conf.html">Configure a Job</a>, <a href="jobs_run.html">Run a Job</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

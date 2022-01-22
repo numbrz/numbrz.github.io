@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Testing a Stage</h2>
+        <p>Flow <b>Stages</b> perform the business logic of <b>Models</b>. They process sets of records by passing them through a sequence of <b>Steps</b>, which configure various transformations and calculations. When editing stages, it is useful to be able to confirm their proper operation, without having to set up and configure the entire flow, job, and data sources. The stage testing feature is designed to provide in-editor testing and trouble-shooting.</p>
+        <h3>Making Stages Testable</h3>
+        <p>Testing a stage starts with instrumenting all stage inputs with a small set of sample data. You must add sample data to the stage's <b>Input</b> section, as well as the <b>Data</b> section of all <i>Combine</i> steps defined in the stage. A button labeled <i>Test Data</i> is displayed in these sections in the upper right corner. Clicking this button will allow you to set up a few records of sample data. This sample data should include known test case values, such that the output of a test can be used to validate the stage's logic.</p>
+        <img src="images/test_stage.gif" alt="Test Stage" class="giphy-med" />
+        <h3>Running a Test</h3>
+        <p>Running the test is simply a matter of clicking the <b>Run Test</b> button that appears in the upper right corner of stage settings once test input is defined. The test inputs will be passed through the stage, and for each step, the data values output by that step will be displayed for review. 
+        <hr/>
+        <p><em>See also: <a href="flows_stages.html">About Flow Stages</a>, <a href="flows_stages_input.html">Stage Input</a>, <a href="flows_stages_steps_combine.html">Combine Data Step</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

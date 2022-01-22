@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Stage Input</h2>
+        <p>Flow <b>Stages</b> are not bound to specific data stored in any particular data source, but rather specify the general structure of the data they require as input. When configuring a stage, the first set of attributes to consider is this data structure specification, which is the top section of a stage configuration. There are two options for the input data to a stage.</p>
+        <h3>Input from Job Configuration</h3>
+        <p>Select this option when you want to connect the flow and its stages to a specific data source in a <b>Job</b>.</p>
+        <p>You can enter the data fields required by this stage by entering them in the <b>Input Fields</b> section. The <i>IMPORT</i> button will allow you to select a data source you have previously configured and copy the column structure from that source. This is a valuable short-cut if you know ahead of time that a specific data source has the fields the flow stage needs.</p>
+        <h3>Input from Working Table</h3>
+        <p>Select this option when the input of a stage is coming from an in-memory working table that has been populated by a previous stage. Working tables allow stages to share data and produce an analysis incrementally. If you select this option, you will also have the opportunity to configure an optional <b>Filter</b> to select a sub-set of records from the table.</p> 
+        <h3>Test Data</h3>
+        <p>Once one or more data fields have been defined, you will see a button labeled <i>Test Data</i> in the upper right corner of the <i>Input</i> section. Clicking this button will allow you to set up a few records of sample data, which you can use to test your sequence of steps while editing a flow stage.</p> 
+        <hr />
+        <p><em>See also: <a href="flows_stages.html">About Flow Stages</a>, <a href="flows_wtables.html">About Working Tables</a>, <a href="../jobs/jobs.html">About Jobs</a>, <a href="flows_stages_test.html">Testing a Stage</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

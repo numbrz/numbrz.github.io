@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Group and Sort Step</h2>
+        <p>This step groups and re-orders the entire record set processed by the stage. Usually the order of records in a stage's input is somewhat indeterminate, depending largely on the specific data source's behavior. This step buffers the records, groups, sorts, and optionally adds calculated fields (for example, a running total), before emitting each modified record to the next step.</p>
+        <img src="images/grpsort_step_data.png" alt="Group and Sort Step Data Flow" class="diagram-med" />
+        <h3>Configuration</h3>
+        <p>To configure a Group and Sort step, you specify the data fields to be used for grouping, sorting and (optionally) for calculations.</p>
+        <ul class="list">
+          <li><b>Group By</b> - like values will be grouped together in the re-ordered records. Calculated fields, such as running totals, start over for each group.</li>
+          <li><b>Sort By</b> - specified additional sorting to be applied within each group.</li>
+          <li><b>Calculated Fields</b> - optional fields that may be appended to the emitted records, includes:
+            <ul>
+              <li><i>Running Total</i> - for the specified field, accumulates a running sum for each group.</li>
+              <li><i>New Group</i> - a true/false flag that identifies the first record of a new group.</li>
+              <li><i>Previous</i> - for the specified field, emits the previous value of the field in the grouped and re-ordered records.</li>
+              <li><i>Change Previous</i> - for the specified field, emits the change from previous value of the field in the grouped and re-ordered records.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr />
+        <p><em>See also: <a href="flows_stages_steps.html">About Stage Steps</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Outputs</h2>
+        <p>In the <b>Outputs</b> section of <b>Job</b> configuration, the specific data-targets a flow will write to are selected and their fields mapped to the fields emitted by the flow. Take note of the following options and attributes.</p>
+        <ul class="list">
+          <li><i>Open Flow</i> button - this allows quick access to the job's <b>Flow</b>.</li>
+          <li><i>Refresh Columns</i> button - if the connected data source or flow has changed since last edit, use this button to refresh the list of fields that must be mapped.</li>
+          <li><i>Change Source</i> button - click this to select a different data-target.
+          <li><i>Column Mapping</i> - Each field in the selected data source (<b>Data Column</b>) must be mapped to a data field specified by the flow (<b>Flow Output</b>).</li>
+        </ul>
+        <h3>Erasing and Replacing Data</h3>
+        <p>Just below the data mapping section is a check box labeled <i>Erase data before running</i>. When this option is checked, the data currently contained in the data target will be erased prior to the <b>Job</b> being run. This effectively replaces the data that was there with the new data written by the job.</p>
+        <p>Some sources of connected <b>Data</b> support a more complex way to replace records. If supported by the selected data target, an <i>Add Erase Criteria</i> button will appear. You can then set conditions describing which records should be erased prior to running the job. Use this when multiple jobs write data to the same target. You can then add criteria that are specific to rows emitted by that job, such that only records in the target data that match are effectively replaced.</p>
+        <img src="images/erase_criteria.png" alt="Erase Criteria" class="static-80" />
+        <p>In the example above, imagine each department has its own job that writes a departmental analysis to a single results table. The records emitted by these models are tagged with the departments name. Now when running, each department can replace only their own rows in the data target.
+        <hr />
+        <p><em>See also: <a href="jobs_create.html">Create a Job</a>, <a href="jobs_conf.html">Configure a Job</a>, <a href="jobs_run.html">Run a Job</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

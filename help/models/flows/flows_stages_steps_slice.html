@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Slice Step</h2>
+        <p>This step splits the current record into two or more records by reorganizing the flat sequence of input fields into new records. During the course of processing, the the append of result values can produce single records that contain multiple logical records; the slice step allows these to be extracted for output or further transformation. The sliced fields can reference any field available in the input, regardless of source. This step emits multiple records to the next step for each record the step receives.</p>
+        <img src="images/slice_step_data.png" alt="Slice Step Data Flow" class="diagram-med" />
+        <h3>Configuration</h3>
+        <p>To configure a slice step, the structure (labels and data types) of the "new" records must be constructed. When a slice step is added, a grid with columns and rows is presented. This grid can be changed: columns and rows can be added or removed.</p>
+        <img src="images/slice_grid.gif" alt="Slice Grid" class="giphy-med" />
+        <ul>
+          <li>Define the <b>Schema</b> - this is the column, label and type information.</li>
+          <li>Define the <b>Output</b> - map values from the original record into new records. The data must conform to the number and types of columns defined above.</li>
+        </ul>
+        <hr />
+        <p><em>See also: <a href="flows_stages_steps.html">About Stage Steps</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

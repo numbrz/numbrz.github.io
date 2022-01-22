@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Output Step</h2>
+        <p>This step specifies what data fields and when in a sequence of steps, output to some target occurs. Multiple output steps can appear in a stage in any location within the sequence of steps. Records received as input to an Output step are always passed on to the following steps, regardless of configuration options. Most frequently, output will occur at the end of processing for any given stage. </p>
+        <h3>Configuration</h3>
+        <p>To configure an Output step, begin by first selecting a target.</p>
+        <p><b>Output to Job Configuration</b></p>
+        <p>Select this option when you want to the records go to a specific data target configured in a <b>Job</b>. The following attributes should then be completed.</p>
+        <ul>
+          <li><b>Label</b> - A friendly name that will make mapping this output more identifiable in <b>Jobs</b>.</li>
+          <li><b>Erase...</b> - Check this to erase data in the target before writing - this setting can be overridden in <b>Jobs</b>.</li>
+          <li><b>Skip...</b> - Check this to skip output (i.e. do no writing) - this setting can be overridden in <b>Jobs</b>. </li>
+        </ul>
+        <p>Click <i>Add Fields</i> to select the data that will be output.</p>
+        <p>Optionally click <i>Add Filter</i> to configure a set of conditions to apply to records before output. Only records that match these conditions will be written. Configuring a filter here is similar to configuring a <a href="flows_stages_steps_filter.html">Filter Step</a>. </p>
+        <p><b>Output to Working Table</b></p>
+        <p>Select this option when the output should be written to an in-memory working table. Working tables allow stages to share data and produce an analysis incrementally. The following attributes should then be completed.</p> 
+        <ul>
+          <li><b>Erase...</b> - Check this to erase data in the working table before writing.</li>
+          <li>Select <b>Working Table</b> - Choose the working table to output to.</li>
+          <li>Map <b>Fields</b> - Map data fields from the record to the fields of the working table.</li> 
+        </ul>
+        <p>Optionally click <i>Add Filter</i> to configure a set of conditions to apply to records before output. Only records that match these conditions will be written. Configuring a filter here is similar to configuring a <a href="flows_stages_steps_filter.html">Filter Step</a>. </p>
+        <hr />
+        <p><em>See also: <a href="flows_stages_steps.html">About Stage Steps</a>, <a href="../jobs/jobs.html">About Jobs</a>, <a href="flows_wtables.html">About Working Tables</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>

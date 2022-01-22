@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Numbrz</title>
+    <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div id="content-wrapper">
+      <div id="content">
+        <h2>Combine Data Step</h2>
+        <p>This step combines the current record with data from a secondary source. The step reads up to 10,000 rows from this source, then, for each  record received by the step, combines that data with each row of the secondary data. Combine steps support filters that cause only combined rows meeting certain criteria to be emitted. Criteria allow for interesting combinations, such as <i>unique joins</i>. Depending upon the configuration, this step can emit multiple records to the next step for each record the step receives.</p>
+        <img src="images/combine_step_data.png" alt="Combine Step Data Flow" class="diagram-med" />
+        <h3>Configuration</h3>
+        <p>To configure a Combine step, specify the source of the data that will be combined with records received by the step. You can select from two options:</p>
+        <ul class="list">
+          <li><b>Input from Job Configuration</b> - Select this option when you want to connect the step to a specific data source in a <b>Job</b>. You can enter the data fields required by this step by entering them in the <b>Input Fields</b> section. The <i>IMPORT</i> button will allow you to select a data source you have previously configured and import the entire structure from that source. </li>
+          <li><b>Input from Working Table</b> - Select this option when the input of step is coming from an in-memory working table that has been populated by a previous stage. Working tables allow stages to share data and produce an analysis incrementally.</li>
+        </ul> 
+        <p>Finally, you may specify an optional <b>Filter</b> that will conditionally match records.</p>
+        <h3>Test Data</h3>
+        <p>Once one or more data fields have been defined, you will see a button labeled <i>Test Data</i> in the upper right corner of the <i>Input</i> section. Clicking this button will allow you to set up a few records of sample data, which you can use to test your sequence of steps while editing a flow stage.</p> 
+        <hr />
+        <p><em>See also: <a href="flows_stages_steps.html">About Stage Steps</a>, <a href="flows_stages_test.html">Testing a Stage</a></em></p>
+      </div>
+    </div>
+  </body>
+</html>
