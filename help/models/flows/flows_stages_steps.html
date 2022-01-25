@@ -11,8 +11,10 @@
       <div id="content">
         <h2>Stage Steps</h2>
         <p>A <b>Step</b> can be thought of as a transformer that operates on a single record at a time. Steps return results by appending them to the input record and then emitting this combined record to the next step in the sequence. In this way, records passing through a <b>Stage</b> are built up iteratively and, by the end of a sequence of transformations, will frequently contain all the intermediary data as well. There are exceptions to this, however. Some steps make significant changes to the structure of the records that the following steps will receive. Examples include the <b>Aggregate</b> and <b>Slice</b> steps. Specific step types are discussed in detail in following sections. </p>
+        <h3>Create a New Step</h3>
+        <p>To insert a step into the sequence of steps in a stage, click the + icon after the step that will precede the new step. A list of available steps will be displayed from which you can select the type of step you wish to insert. You can rearrange steps using the arrow buttons on the step configuration tile. </p>
         <hr />
-        <p><em>See also: <a href="flows_stages_steps_create.html">Create a Step</a>, <a href="flows_stages_steps_conf.html">Configure a Step</a>, <a href="flows_stages.html">About Flow Stages</a></em></p>
+        <p><em>See also: <a href="flows_stages_steps_conf.html">Configure a Step</a>, <a href="flows_stages.html">About Flow Stages</a></em></p>
       </div>
     </div>
   </body>
