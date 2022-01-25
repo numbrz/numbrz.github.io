@@ -9,14 +9,22 @@
   <body>
     <div id="content-wrapper">
       <div id="content">
-        <h2>Numbrz User Database</h2>
-        <p>Numbrz supports ... </p>
-        <h3>Configuring the Connection</h3>
-        <p><b>Overview section</b><br/>This section allows you to ...</p>
-        <p><b>Available Tables</b><br/>This section shows the tables ...</p>
-        <p><b>Connected Tables</b><br/>This section shows the data you have ... </p>
+        <h2>Numbrz Database</h2>
+        <p>Numbrz provides a simple data hosting capability via the Numbrz database. You can use these hosted tables when you want to store some of your data within the Numbrz application. This can be very useful for interstitial, persistent data that contributes towards a final analysis but is not, itself, part of the ultimate results. For example, you may have a series of related models that leverage common data.</p>
+        <h3>Configuring a Numbrz Database</h3>
+        <p><b>Overview section</b><br/>This section allows you to set a name and description for this database.</p>
+        <p><b>Tables section</b><br/>This section allows you to manage the tables in the database. You can edit existing tables, add new tables, or delete tables. When adding columns to a Numbrz Table, note that the type of data must be specified. These types are slightly different than the ones encountered when working with <b>Flows</b>.</p>
+          <ul class="list">
+            <li><b>String</b> - Use this type for a text value.</li>
+            <li><b>Integer</b> - Use this type for a whole number without fractional value.</li>
+            <li><b>Decimal</b> - Use this type for general numeric values and currency.</li>
+            <li><b>Date</b> - Use this type for a date with no time (e.g.: '2/14/2020').</li>
+            <li><b>Date and Time</b> - Use this type for a date with time (e.g.: '2/14/2020 10:45:30').</li>
+            <li><b>Boolean</b> - Use this type for a true/false value.</li>
+          </ul>
+        <p><br/><i><b>Note:</b> At this time, you cannot view or enter data directly into your Numbrz tables. Instead, prepare <b>Flows</b> and <b>Jobs</b> to populate the tables with data or to copy table data to an external target, for example, a spreadsheet.</i></p>
         <hr/>
-        <p><em>See Also: <a href="data_sources.html">Data Sources</a></em></p>
+        <p><em>See Also: <a href="data_sources.html">Data Sources</a>, <a href="../models/flows/flows.html">About Flows</a>, <a href="../models/jobs/jobs.html">About Jobs</a></em></p>
       </div>
     </div>
   </body>
